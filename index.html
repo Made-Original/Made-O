@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Made Original — Coming Soon</title>
+<meta name="description" content="Made Original — something warm is on its way. Coming soon." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink:        #1a0f0a;
+    --ember:      #ff6b35;
+    --amber:      #ffa552;
+    --gold:       #ffd39b;
+    --clay:       #c9462c;
+    --sand:       #f6e7d7;
+    --sand-dim:   rgba(246, 231, 215, 0.62);
+    --glass:      rgba(255, 231, 205, 0.06);
+    --edge:       rgba(255, 190, 130, 0.18);
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+
+  body {
+    background: radial-gradient(120% 120% at 50% 0%, #2b160c 0%, #1a0f0a 55%, #120a06 100%);
+    color: var(--sand);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    overflow: hidden;
+    cursor: none;
+  }
+
+  /* ---------- background layers ---------- */
+
+  #field {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    display: block;
+  }
+
+  .aurora {
+    position: fixed;
+    inset: -30%;
+    z-index: 0;
+    pointer-events: none;
+    filter: blur(90px);
+    opacity: 0.55;
+  }
+
+  .aurora span {
+    position: absolute;
+    border-radius: 50%;
+    mix-blend-mode: screen;
+    animation: drift 22s ease-in-out infinite alternate;
+  }
+
+  .aurora span:nth-child(1) {
+    width: 46vw; height: 46vw;
+    top: 8%; left: 6%;
+    background: radial-gradient(circle, var(--clay), transparent 68%);
+  }
+  .aurora span:nth-child(2) {
+    width: 40vw; height: 40vw;
+    top: 46%; left: 58%;
+    background: radial-gradient(circle, var(--ember), transparent 68%);
+    animation-duration: 28s;
+    animation-delay: -6s;
+  }
+  .aurora span:nth-child(3) {
+    width: 34vw; height: 34vw;
+    top: 60%; left: 18%;
+    background: radial-gradient(circle, var(--amber), transparent 70%);
+    animation-duration: 34s;
+    animation-delay: -14s;
+  }
+
+  @keyframes drift {
+    0%   { transform: translate3d(0, 0, 0) scale(1); }
+    50%  { transform: translate3d(6vw, -5vh, 0) scale(1.18); }
+    100% { transform: translate3d(-5vw, 7vh, 0) scale(0.92); }
+  }
+
+  /* film grain */
+  .grain {
+    position: fixed;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation: grain-shift 0.7s steps(2) infinite;
+  }
+
+  @keyframes grain-shift {
+    0%   { transform: translate(0, 0); }
+    50%  { transform: translate(-3%, 2%); }
+    100% { transform: translate(2%, -3%); }
+  }
+
+  /* cursor spotlight that warms whatever it passes over */
+  .spotlight {
+    position: fixed;
+    top: 0; left: 0;
+    width: 44rem; height: 44rem;
+    margin: -22rem 0 0 -22rem;
+    z-index: 1;
+    pointer-events: none;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 137, 61, 0.20) 0%, rgba(255, 107, 53, 0.07) 38%, transparent 66%);
+    transition: opacity 0.5s ease;
+  }
+
+  /* ---------- content ---------- */
+
+  main {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    gap: 1.75rem;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--edge);
+    border-radius: 999px;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    font-size: 0.72rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--sand-dim);
+  }
+
+  .pulse {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--amber);
+    box-shadow: 0 0 0 0 rgba(255, 165, 82, 0.7);
+    animation: pulse 2.4s ease-out infinite;
+  }
+
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(255, 165, 82, 0.6); }
+    70%  { box-shadow: 0 0 0 12px rgba(255, 165, 82, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 165, 82, 0); }
+  }
+
+  h1 {
+    margin: 0;
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(2.8rem, 11vw, 8.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    perspective: 900px;
+  }
+
+  h1 .word {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  h1 .ch {
+    display: inline-block;
+    cursor: none;
+    background: linear-gradient(175deg, #fff4e6 10%, var(--gold) 45%, var(--amber) 78%, var(--clay) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.25, 1.2), filter 0.45s ease;
+    will-change: transform;
+  }
+
+  h1 .ch:hover {
+    transform: translateY(-0.11em) scale(1.06) rotate(-2.5deg);
+    filter: drop-shadow(0 0 26px rgba(255, 140, 66, 0.65));
+  }
+
+  .tagline {
+    position: relative;
+    font-size: clamp(1.05rem, 2.6vw, 1.6rem);
+    font-weight: 300;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding-left: 0.42em;
+  }
+
+  .tagline::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -0.85rem;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--ember), transparent);
+    transform: translateX(-50%);
+    animation: sweep 3.4s ease-in-out 1.6s infinite;
+  }
+
+  @keyframes sweep {
+    0%, 100% { width: 0; opacity: 0; }
+    50%      { width: 120%; opacity: 1; }
+  }
+
+  .blurb {
+    max-width: 34rem;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    font-weight: 300;
+    color: var(--sand-dim);
+    margin: 0;
+  }
+
+  /* ---------- signup ---------- */
+
+  form {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.4rem;
+    border: 1px solid var(--edge);
+    border-radius: 999px;
+    background: var(--glass);
+    backdrop-filter: blur(14px);
+    transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+  }
+
+  form:focus-within {
+    border-color: rgba(255, 165, 82, 0.55);
+    box-shadow: 0 0 44px rgba(255, 107, 53, 0.22);
+    transform: translateY(-2px);
+  }
+
+  input {
+    width: min(19rem, 46vw);
+    padding: 0.85rem 1.2rem;
+    border: 0;
+    background: transparent;
+    color: var(--sand);
+    font: inherit;
+    font-size: 0.92rem;
+    outline: none;
+    cursor: none;
+  }
+
+  input::placeholder { color: rgba(246, 231, 215, 0.38); }
+
+  button {
+    position: relative;
+    padding: 0.85rem 1.7rem;
+    border: 0;
+    border-radius: 999px;
+    background: linear-gradient(120deg, var(--ember), var(--amber));
+    color: #23120a;
+    font: inherit;
+    font-weight: 500;
+    font-size: 0.88rem;
+    letter-spacing: 0.04em;
+    cursor: none;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.25, 1.2), box-shadow 0.3s ease;
+  }
+
+  button:hover {
+    box-shadow: 0 10px 34px rgba(255, 107, 53, 0.42);
+  }
+
+  button:active { transform: scale(0.96) !important; }
+
+  button .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.55);
+    transform: translate(-50%, -50%) scale(0);
+    animation: ripple 0.65s ease-out forwards;
+    pointer-events: none;
+  }
+
+  @keyframes ripple {
+    to { transform: translate(-50%, -50%) scale(9); opacity: 0; }
+  }
+
+  .note {
+    min-height: 1.2rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    color: var(--amber);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .note.show { opacity: 1; transform: translateY(0); }
+  .note.err  { color: #ff8f6b; }
+
+  footer {
+    position: fixed;
+    bottom: 1.6rem;
+    left: 0; right: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    gap: 1.6rem;
+    font-size: 0.74rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(246, 231, 215, 0.3);
+  }
+
+  footer a {
+    color: inherit;
+    text-decoration: none;
+    cursor: none;
+    transition: color 0.3s ease;
+  }
+
+  footer a:hover { color: var(--amber); }
+
+  /* ---------- custom cursor ---------- */
+
+  .dot, .ring {
+    position: fixed;
+    top: 0; left: 0;
+    z-index: 6;
+    pointer-events: none;
+    border-radius: 50%;
+  }
+
+  .dot {
+    width: 6px; height: 6px;
+    margin: -3px 0 0 -3px;
+    background: var(--gold);
+  }
+
+  .ring {
+    width: 34px; height: 34px;
+    margin: -17px 0 0 -17px;
+    border: 1px solid rgba(255, 165, 82, 0.6);
+    transition: width 0.3s ease, height 0.3s ease, margin 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+  }
+
+  .ring.grow {
+    width: 62px; height: 62px;
+    margin: -31px 0 0 -31px;
+    background: rgba(255, 165, 82, 0.12);
+    border-color: rgba(255, 211, 155, 0.9);
+  }
+
+  /* ---------- entrance ---------- */
+
+  .rise {
+    opacity: 0;
+    transform: translateY(26px);
+    animation: rise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes rise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  h1 .ch {
+    opacity: 0;
+    animation: drop 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes drop {
+    from { opacity: 0; transform: translateY(0.5em) rotateX(-70deg); }
+    to   { opacity: 1; transform: translateY(0) rotateX(0); }
+  }
+
+  @media (max-width: 640px) {
+    body { cursor: auto; }
+    .dot, .ring { display: none; }
+    input, button, footer a, h1 .ch { cursor: auto; }
+    form { flex-direction: column; border-radius: 1.5rem; }
+    input { width: min(19rem, 74vw); text-align: center; }
+    .tagline { letter-spacing: 0.3em; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::after { animation: none !important; transition-duration: 0.01ms !important; }
+    .rise, h1 .ch { opacity: 1; transform: none; }
+    .grain { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="field"></canvas>
+
+<div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+<div class="spotlight" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<main>
+  <div class="eyebrow rise" style="animation-delay: 0.1s"><i class="pulse"></i> In the making</div>
+
+  <h1 id="title" aria-label="Made Original">Made Original</h1>
+
+  <p class="tagline rise" style="animation-delay: 1.35s">Coming Soon</p>
+
+  <p class="blurb rise" style="animation-delay: 1.5s">
+    Something crafted with intent, warmth and a little patience.
+    Leave your email and you'll be the first through the door.
+  </p>
+
+  <form id="signup" class="rise" style="animation-delay: 1.65s" novalidate>
+    <input id="email" type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email" />
+    <button type="submit">Notify me</button>
+  </form>
+
+  <p class="note" id="note" role="status" aria-live="polite"></p>
+</main>
+
+<footer class="rise" style="animation-delay: 1.9s">
+  <a href="#">Instagram</a>
+  <a href="#">Twitter</a>
+  <a href="#">hello@madeoriginal.com</a>
+</footer>
+
+<div class="ring" aria-hidden="true"></div>
+<div class="dot" aria-hidden="true"></div>
+
+<script>
+(() => {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- split the heading into animated characters ---- */
+  const title = document.getElementById('title');
+  const words = title.textContent.trim().split(' ');
+  title.textContent = '';
+  let index = 0;
+
+  words.forEach((word, w) => {
+    const span = document.createElement('span');
+    span.className = 'word';
+    [...word].forEach(char => {
+      const c = document.createElement('span');
+      c.className = 'ch';
+      c.textContent = char;
+      c.style.animationDelay = (0.35 + index * 0.045) + 's';
+      span.appendChild(c);
+      index++;
+    });
+    title.appendChild(span);
+    if (w < words.length - 1) title.appendChild(document.createTextNode(' '));
+  });
+
+  /* ---- pointer: spotlight + custom cursor ---- */
+  const spot = document.querySelector('.spotlight');
+  const dot  = document.querySelector('.dot');
+  const ring = document.querySelector('.ring');
+
+  const pointer = { x: innerWidth / 2, y: innerHeight / 2 };
+  const soft    = { x: pointer.x, y: pointer.y };
+  let hasPointer = false;
+
+  addEventListener('pointermove', e => {
+    pointer.x = e.clientX;
+    pointer.y = e.clientY;
+    hasPointer = true;
+    dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+  }, { passive: true });
+
+  addEventListener('pointerdown', () => ring.classList.add('grow'));
+  addEventListener('pointerup',   () => ring.classList.remove('grow'));
+
+  document.querySelectorAll('a, button, input, .ch').forEach(el => {
+    el.addEventListener('pointerenter', () => ring.classList.add('grow'));
+    el.addEventListener('pointerleave', () => ring.classList.remove('grow'));
+  });
+
+  /* ---- ember particle field ---- */
+  const canvas = document.getElementById('field');
+  const ctx = canvas.getContext('2d');
+  const embers = [];
+  let dpr = 1;
+
+  function resize() {
+    dpr = Math.min(devicePixelRatio || 1, 2);
+    canvas.width  = innerWidth  * dpr;
+    canvas.height = innerHeight * dpr;
+    canvas.style.width  = innerWidth + 'px';
+    canvas.style.height = innerHeight + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function seed() {
+    embers.length = 0;
+    const count = Math.round(Math.min(110, innerWidth / 12));
+    for (let i = 0; i < count; i++) {
+      embers.push({
+        x: Math.random() * innerWidth,
+        y: Math.random() * innerHeight,
+        r: Math.random() * 1.9 + 0.5,
+        vx: (Math.random() - 0.5) * 0.22,
+        vy: -Math.random() * 0.32 - 0.05,
+        hue: 18 + Math.random() * 26,
+        a: Math.random() * 0.5 + 0.18,
+        tw: Math.random() * Math.PI * 2
+      });
+    }
+  }
+
+  resize();
+  seed();
+  addEventListener('resize', () => { resize(); seed(); });
+
+  function frame() {
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+
+    soft.x += (pointer.x - soft.x) * 0.09;
+    soft.y += (pointer.y - soft.y) * 0.09;
+    spot.style.transform = `translate(${soft.x}px, ${soft.y}px)`;
+    ring.style.transform = `translate(${soft.x}px, ${soft.y}px)`;
+    spot.style.opacity = hasPointer ? 1 : 0.4;
+
+    for (const p of embers) {
+      // embers drift away from the pointer, like heat pushing air
+      const dx = p.x - pointer.x;
+      const dy = p.y - pointer.y;
+      const d2 = dx * dx + dy * dy;
+      if (d2 < 26000 && d2 > 1) {
+        const f = (1 - d2 / 26000) * 0.85;
+        const d = Math.sqrt(d2);
+        p.vx += (dx / d) * f * 0.5;
+        p.vy += (dy / d) * f * 0.5;
+      }
+
+      p.vx *= 0.985;
+      p.vy = p.vy * 0.985 - 0.004;
+      p.x += p.vx;
+      p.y += p.vy;
+      p.tw += 0.04;
+
+      if (p.y < -12) { p.y = innerHeight + 12; p.x = Math.random() * innerWidth; p.vy = -Math.random() * 0.32 - 0.05; }
+      if (p.y > innerHeight + 12) p.y = -12;
+      if (p.x < -12) p.x = innerWidth + 12;
+      if (p.x > innerWidth + 12) p.x = -12;
+
+      const alpha = p.a * (0.65 + Math.sin(p.tw) * 0.35);
+      const glow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 6);
+      glow.addColorStop(0, `hsla(${p.hue}, 100%, 68%, ${alpha})`);
+      glow.addColorStop(1, `hsla(${p.hue}, 100%, 55%, 0)`);
+      ctx.fillStyle = glow;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r * 6, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    requestAnimationFrame(frame);
+  }
+
+  if (reduced) {
+    spot.style.opacity = 0;
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+  } else {
+    frame();
+  }
+
+  /* ---- heading reacts to pointer proximity ---- */
+  if (!reduced) {
+    const chars = [...document.querySelectorAll('.ch')];
+    addEventListener('pointermove', e => {
+      for (const c of chars) {
+        const b = c.getBoundingClientRect();
+        const dx = e.clientX - (b.left + b.width / 2);
+        const dy = e.clientY - (b.top + b.height / 2);
+        const dist = Math.hypot(dx, dy);
+        if (dist < 170) {
+          const pull = (1 - dist / 170) * 14;
+          c.style.translate = `${-dx / dist * pull}px ${-dy / dist * pull}px`;
+        } else if (c.style.translate) {
+          c.style.translate = '';
+        }
+      }
+    }, { passive: true });
+  }
+
+  /* ---- magnetic button + ripple ---- */
+  const button = document.querySelector('button');
+
+  if (!reduced) {
+    button.addEventListener('pointermove', e => {
+      const b = button.getBoundingClientRect();
+      const mx = e.clientX - (b.left + b.width / 2);
+      const my = e.clientY - (b.top + b.height / 2);
+      button.style.transform = `translate(${mx * 0.25}px, ${my * 0.35}px)`;
+    });
+    button.addEventListener('pointerleave', () => { button.style.transform = ''; });
+  }
+
+  button.addEventListener('pointerdown', e => {
+    const b = button.getBoundingClientRect();
+    const r = document.createElement('span');
+    r.className = 'ripple';
+    r.style.width = r.style.height = '18px';
+    r.style.left = (e.clientX - b.left) + 'px';
+    r.style.top  = (e.clientY - b.top) + 'px';
+    button.appendChild(r);
+    setTimeout(() => r.remove(), 700);
+  });
+
+  /* ---- signup ---- */
+  const form  = document.getElementById('signup');
+  const email = document.getElementById('email');
+  const note  = document.getElementById('note');
+
+  function say(message, isError) {
+    note.textContent = message;
+    note.classList.toggle('err', !!isError);
+    note.classList.add('show');
+  }
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const value = email.value.trim();
+    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
+
+    if (!valid) {
+      say('That email looks incomplete — mind checking it?', true);
+      form.animate(
+        [{ transform: 'translateX(0)' }, { transform: 'translateX(-8px)' },
+         { transform: 'translateX(8px)' }, { transform: 'translateX(0)' }],
+        { duration: 320, easing: 'ease-in-out' }
+      );
+      email.focus();
+      return;
+    }
+
+    say("You're on the list. We'll be in touch.", false);
+    form.reset();
+    email.blur();
+    burst();
+  });
+
+  /* celebratory ember burst on a successful signup */
+  function burst() {
+    if (reduced) return;
+    const b = form.getBoundingClientRect();
+    const cx = b.left + b.width / 2;
+    const cy = b.top + b.height / 2;
+    for (let i = 0; i < 34; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const speed = Math.random() * 3.4 + 1.2;
+      embers.push({
+        x: cx, y: cy,
+        r: Math.random() * 2 + 0.8,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        hue: 22 + Math.random() * 22,
+        a: 0.8,
+        tw: Math.random() * Math.PI * 2
+      });
+    }
+    if (embers.length > 260) embers.splice(0, embers.length - 260);
+  }
+})();
+</script>
+</body>
+</html>
