@@ -1,0 +1,40 @@
+site_name: Made Original
+email: hello@made-o.com
+
+# Search engines
+seo_title: "Export-Ready Product Data & Dealer Portals | Made Original"
+seo_description: "Consulting for pump, machinery and engineering manufacturers: export-ready product data, technical documentation, digital catalogues and dealer portals."
+keywords: "product data consulting, PIM, product information management, digital catalogue, pump catalogue, dealer portal, technical documentation, EU Machinery Regulation, export readiness, Pump Connect, NovaDB"
+expertise:
+  - Product Information Management
+  - Digital Catalogues
+  - 3D Catalogues
+  - Dealer Portals
+  - Technical Documentation
+  - EU Machinery Regulation
+  - Industrial Digital Transformation
+
+# Social sharing (LinkedIn, WhatsApp, X…)
+share_title: "Made Original — Get export-ready, from the product data up"
+share_description: "Get your product data, documentation and dealer systems ready for international markets. Consulting that ends in working systems."
+og_image: /assets/img/og-image.png
+og_image_alt: "Made Original — Get export-ready, from the product data up. Product data, documentation, dealer systems."
+
+# Header
+nav:
+  - label: Services
+    target: services
+  - label: Products
+    target: products
+  - label: How we work
+    target: process
+  - label: Industries
+    target: industries
+  - label: Technology
+    target: technology
+  - label: Insights
+    target: insights
+cta_label: Book a consultation
+
+# Footer
+footer_text: "Getting export-oriented pump, machinery, and engineering manufacturers ready for international markets — data, documentation, and dealer systems."

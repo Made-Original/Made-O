@@ -1,0 +1,32 @@
+---
+layout: default
+---
+{%- assign ins = site.data.home.insights -%}
+{%- assign contact = site.data.home.contact -%}
+<article class="section article">
+  <div class="wrap narrow">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="{{ '/' | relative_url }}#insights">← {{ ins.eyebrow | escape }}</a></nav>
+    <span class="cat">{{ page.category | escape }}</span>
+    <h1>{{ page.title | escape }}</h1>
+    <p class="lead">{{ page.summary | escape }}</p>
+    {%- unless page.coming_soon %}
+    <p class="meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time></p>
+    {%- endunless %}
+    {%- if page.image and page.image != "" %}
+    <figure class="cover"><img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | escape }}" decoding="async"></figure>
+    {%- endif %}
+
+    {%- if page.coming_soon %}
+    <p class="soon-note">{{ ins.soon_label | escape }} — this note is being written. Get in touch if you'd like it sent to you when it's out.</p>
+    {%- else %}
+    <div class="prose">
+{{ content }}
+    </div>
+    {%- endif %}
+
+    <div class="article-cta">
+      <p>{{ contact.title | escape }}</p>
+      <a class="btn btn-primary" href="{{ '/' | relative_url }}#contact">{{ site.data.settings.cta_label | escape }}</a>
+    </div>
+  </div>
+</article>
