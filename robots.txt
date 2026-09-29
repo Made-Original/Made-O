@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://made-o.com/sitemap.xml
