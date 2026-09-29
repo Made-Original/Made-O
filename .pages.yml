@@ -263,6 +263,10 @@ content:
       - { name: address_label, label: Address label, type: string }
       - { name: map_label, label: Map link text, type: string }
       - { name: button_label, label: Send button text, type: string }
+      - { name: sending_label, label: Button text while sending, type: string }
+      - { name: form_note, label: Note under the button, type: string }
+      - { name: success_message, label: Message after sending, type: text }
+      - { name: error_message, label: Message if sending fails, type: text, description: "The email address is added after this automatically." }
 
   # ---------------------------------------------------------------- Settings
   - name: settings
@@ -312,5 +316,7 @@ content:
                 - { value: technology, label: Technology }
                 - { value: insights, label: Insights }
                 - { value: contact, label: Contact }
+      - { name: form_endpoint, label: Contact form endpoint, type: string, description: "Where enquiries are sent. Default: https://formsubmit.co/ajax/hello@made-o.com" }
+      - { name: form_access_key, label: Contact form access key, type: string, description: "Only needed for Web3Forms." }
       - { name: cta_label, label: Header button text, type: string }
       - { name: footer_text, label: Footer text, type: text }

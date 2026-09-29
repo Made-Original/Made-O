@@ -13,6 +13,13 @@ address:
   # Optional Google Maps link for "View on map".
   map_url: ""
 
+# Contact form delivery.
+# FormSubmit needs no account: the first enquiry sends an activation email to the address
+# in the endpoint — click the link in it once. To use Web3Forms instead, set the endpoint to
+# https://api.web3forms.com/submit and paste your access key below.
+form_endpoint: "https://formsubmit.co/ajax/hello@made-o.com"
+form_access_key: ""
+
 # Search engines
 seo_title: "Export-Ready Product Data & Dealer Portals | Made Original"
 seo_description: "Consulting for pump, machinery and engineering manufacturers: export-ready product data, technical documentation, digital catalogues and dealer portals."

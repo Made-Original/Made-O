@@ -295,7 +295,16 @@ home: true
         </dl>
       </div>
     </div>
-    <form class="form" id="enquiry" data-email="{{ s.email }}" novalidate>
+    <form class="form" id="enquiry" action="{{ s.form_endpoint }}" method="post" novalidate
+          data-email="{{ s.email }}"
+          data-key="{{ s.form_access_key }}"
+          data-sending="{{ contact.sending_label | escape }}"
+          data-success="{{ contact.success_message | escape }}"
+          data-error="{{ contact.error_message | escape }}">
+      <div class="hp" aria-hidden="true">
+        <label for="f-website">Leave this field empty</label>
+        <input id="f-website" name="_honey" type="text" tabindex="-1" autocomplete="off">
+      </div>
       <div class="field-row">
         <div class="field">
           <label for="f-name">Your name</label>
@@ -315,7 +324,7 @@ home: true
         <textarea id="f-msg" name="message" placeholder="A few lines about your products and goals" required></textarea>
       </div>
       <button class="btn btn-primary" type="submit">{{ contact.button_label | escape }}</button>
-      <small>Opens your email app addressed to {{ s.email }}.</small>
+      <small>{{ contact.form_note | escape }}</small>
       <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
     </form>
   </div>

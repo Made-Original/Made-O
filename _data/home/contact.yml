@@ -7,3 +7,7 @@ phone_label: Phone
 address_label: Office
 map_label: View on map
 button_label: Send enquiry
+sending_label: Sending…
+form_note: Your details are only used to reply to your enquiry.
+success_message: "Thank you — your enquiry has been sent. We'll get back to you soon."
+error_message: "Sorry, your enquiry couldn't be sent right now."

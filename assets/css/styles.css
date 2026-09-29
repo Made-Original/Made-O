@@ -358,7 +358,12 @@ header.menu-open .mobile-menu { display: block; }
 .form .btn-primary { width: 100%; background: var(--accent); color: #fff; margin-top: 6px; }
 .form .btn-primary:hover { background: #a8301f; }
 .form small { display: block; color: #aab5c0; margin-top: 12px; font-size: 0.8rem; }
-.form-status { margin: 12px 0 0; font-size: 0.9rem; color: var(--accent-2); min-height: 0; }
+.form-status { max-width: none; margin: 14px 0 0; padding: 12px 14px; border-radius: 12px; font-size: 0.92rem; line-height: 1.5; }
+.form-status.ok { color: var(--paper-on-dark); background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); }
+.form-status.err { color: var(--accent-2); background: rgba(224,96,79,.08); border: 1px solid rgba(224,96,79,.35); }
+.form .btn-primary[disabled] { opacity: .7; cursor: progress; }
+/* spam trap: hidden from people, filled in by bots */
+.hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 .form-status:empty { display: none; }
 .form-status a { text-decoration: underline; }
 
