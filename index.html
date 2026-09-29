@@ -1,677 +1,589 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Made Original — Coming Soon</title>
-<meta name="description" content="Made Original — something warm is on its way. Coming soon." />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
-<style>
-  :root {
-    --ink:        #1a0f0a;
-    --ember:      #ff6b35;
-    --amber:      #ffa552;
-    --gold:       #ffd39b;
-    --clay:       #c9462c;
-    --sand:       #f6e7d7;
-    --sand-dim:   rgba(246, 231, 215, 0.62);
-    --glass:      rgba(255, 231, 205, 0.06);
-    --edge:       rgba(255, 190, 130, 0.18);
-  }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-  * { box-sizing: border-box; }
+<!-- Primary SEO -->
+<title>Export-Ready Product Data &amp; Dealer Portals | Made Original</title>
+<meta name="description" content="Consulting for pump, machinery and engineering manufacturers: export-ready product data, technical documentation, digital catalogues and dealer portals.">
+<meta name="keywords" content="product data consulting, PIM, product information management, digital catalogue, pump catalogue, dealer portal, technical documentation, EU Machinery Regulation, export readiness, Pump Connect, NovaDB">
+<meta name="author" content="Made Original">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="canonical" href="https://made-o.com/">
 
-  html, body {
-    height: 100%;
-    margin: 0;
-  }
+<!-- Icons & theme -->
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#f0ece4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c1015" media="(prefers-color-scheme: dark)">
 
-  body {
-    background: radial-gradient(120% 120% at 50% 0%, #2b160c 0%, #1a0f0a 55%, #120a06 100%);
-    color: var(--sand);
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    overflow: hidden;
-    cursor: none;
-  }
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Made Original">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://made-o.com/">
+<meta property="og:title" content="Made Original — Get export-ready, from the product data up">
+<meta property="og:description" content="Get your product data, documentation and dealer systems ready for international markets. Consulting that ends in working systems.">
+<meta property="og:image" content="https://made-o.com/assets/img/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Made Original — Get export-ready, from the product data up. Product data, documentation, dealer systems.">
 
-  /* ---------- background layers ---------- */
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Made Original — Get export-ready, from the product data up">
+<meta name="twitter:description" content="Product data, documentation and dealer systems for export-oriented manufacturers.">
+<meta name="twitter:image" content="https://made-o.com/assets/img/og-image.png">
+<meta name="twitter:image:alt" content="Made Original — Get export-ready, from the product data up.">
 
-  #field {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    display: block;
-  }
+<!-- Fonts (only the weights in use) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono&display=swap">
 
-  .aurora {
-    position: fixed;
-    inset: -30%;
-    z-index: 0;
-    pointer-events: none;
-    filter: blur(90px);
-    opacity: 0.55;
-  }
+<link rel="stylesheet" href="assets/css/styles.css">
+<script src="assets/js/main.js" defer></script>
 
-  .aurora span {
-    position: absolute;
-    border-radius: 50%;
-    mix-blend-mode: screen;
-    animation: drift 22s ease-in-out infinite alternate;
-  }
-
-  .aurora span:nth-child(1) {
-    width: 46vw; height: 46vw;
-    top: 8%; left: 6%;
-    background: radial-gradient(circle, var(--clay), transparent 68%);
-  }
-  .aurora span:nth-child(2) {
-    width: 40vw; height: 40vw;
-    top: 46%; left: 58%;
-    background: radial-gradient(circle, var(--ember), transparent 68%);
-    animation-duration: 28s;
-    animation-delay: -6s;
-  }
-  .aurora span:nth-child(3) {
-    width: 34vw; height: 34vw;
-    top: 60%; left: 18%;
-    background: radial-gradient(circle, var(--amber), transparent 70%);
-    animation-duration: 34s;
-    animation-delay: -14s;
-  }
-
-  @keyframes drift {
-    0%   { transform: translate3d(0, 0, 0) scale(1); }
-    50%  { transform: translate3d(6vw, -5vh, 0) scale(1.18); }
-    100% { transform: translate3d(-5vw, 7vh, 0) scale(0.92); }
-  }
-
-  /* film grain */
-  .grain {
-    position: fixed;
-    inset: 0;
-    z-index: 3;
-    pointer-events: none;
-    opacity: 0.05;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
-    animation: grain-shift 0.7s steps(2) infinite;
-  }
-
-  @keyframes grain-shift {
-    0%   { transform: translate(0, 0); }
-    50%  { transform: translate(-3%, 2%); }
-    100% { transform: translate(2%, -3%); }
-  }
-
-  /* cursor spotlight that warms whatever it passes over */
-  .spotlight {
-    position: fixed;
-    top: 0; left: 0;
-    width: 44rem; height: 44rem;
-    margin: -22rem 0 0 -22rem;
-    z-index: 1;
-    pointer-events: none;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 137, 61, 0.20) 0%, rgba(255, 107, 53, 0.07) 38%, transparent 66%);
-    transition: opacity 0.5s ease;
-  }
-
-  /* ---------- content ---------- */
-
-  main {
-    position: relative;
-    z-index: 2;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 2rem 1.5rem;
-    gap: 1.75rem;
-  }
-
-  .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--edge);
-    border-radius: 999px;
-    background: var(--glass);
-    backdrop-filter: blur(10px);
-    font-size: 0.72rem;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    color: var(--sand-dim);
-  }
-
-  .pulse {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: var(--amber);
-    box-shadow: 0 0 0 0 rgba(255, 165, 82, 0.7);
-    animation: pulse 2.4s ease-out infinite;
-  }
-
-  @keyframes pulse {
-    0%   { box-shadow: 0 0 0 0 rgba(255, 165, 82, 0.6); }
-    70%  { box-shadow: 0 0 0 12px rgba(255, 165, 82, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 165, 82, 0); }
-  }
-
-  h1 {
-    margin: 0;
-    font-family: 'Fraunces', Georgia, serif;
-    font-weight: 500;
-    font-size: clamp(2.8rem, 11vw, 8.5rem);
-    line-height: 0.95;
-    letter-spacing: -0.03em;
-    perspective: 900px;
-  }
-
-  h1 .word {
-    display: inline-block;
-    white-space: nowrap;
-  }
-
-  h1 .ch {
-    display: inline-block;
-    cursor: none;
-    background: linear-gradient(175deg, #fff4e6 10%, var(--gold) 45%, var(--amber) 78%, var(--clay) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.25, 1.2), filter 0.45s ease;
-    will-change: transform;
-  }
-
-  h1 .ch:hover {
-    transform: translateY(-0.11em) scale(1.06) rotate(-2.5deg);
-    filter: drop-shadow(0 0 26px rgba(255, 140, 66, 0.65));
-  }
-
-  .tagline {
-    position: relative;
-    font-size: clamp(1.05rem, 2.6vw, 1.6rem);
-    font-weight: 300;
-    letter-spacing: 0.42em;
-    text-transform: uppercase;
-    color: var(--gold);
-    padding-left: 0.42em;
-  }
-
-  .tagline::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    bottom: -0.85rem;
-    width: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--ember), transparent);
-    transform: translateX(-50%);
-    animation: sweep 3.4s ease-in-out 1.6s infinite;
-  }
-
-  @keyframes sweep {
-    0%, 100% { width: 0; opacity: 0; }
-    50%      { width: 120%; opacity: 1; }
-  }
-
-  .blurb {
-    max-width: 34rem;
-    font-size: 0.95rem;
-    line-height: 1.75;
-    font-weight: 300;
-    color: var(--sand-dim);
-    margin: 0;
-  }
-
-  /* ---------- signup ---------- */
-
-  form {
-    display: flex;
-    gap: 0.5rem;
-    padding: 0.4rem;
-    border: 1px solid var(--edge);
-    border-radius: 999px;
-    background: var(--glass);
-    backdrop-filter: blur(14px);
-    transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
-  }
-
-  form:focus-within {
-    border-color: rgba(255, 165, 82, 0.55);
-    box-shadow: 0 0 44px rgba(255, 107, 53, 0.22);
-    transform: translateY(-2px);
-  }
-
-  input {
-    width: min(19rem, 46vw);
-    padding: 0.85rem 1.2rem;
-    border: 0;
-    background: transparent;
-    color: var(--sand);
-    font: inherit;
-    font-size: 0.92rem;
-    outline: none;
-    cursor: none;
-  }
-
-  input::placeholder { color: rgba(246, 231, 215, 0.38); }
-
-  button {
-    position: relative;
-    padding: 0.85rem 1.7rem;
-    border: 0;
-    border-radius: 999px;
-    background: linear-gradient(120deg, var(--ember), var(--amber));
-    color: #23120a;
-    font: inherit;
-    font-weight: 500;
-    font-size: 0.88rem;
-    letter-spacing: 0.04em;
-    cursor: none;
-    overflow: hidden;
-    transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.25, 1.2), box-shadow 0.3s ease;
-  }
-
-  button:hover {
-    box-shadow: 0 10px 34px rgba(255, 107, 53, 0.42);
-  }
-
-  button:active { transform: scale(0.96) !important; }
-
-  button .ripple {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.55);
-    transform: translate(-50%, -50%) scale(0);
-    animation: ripple 0.65s ease-out forwards;
-    pointer-events: none;
-  }
-
-  @keyframes ripple {
-    to { transform: translate(-50%, -50%) scale(9); opacity: 0; }
-  }
-
-  .note {
-    min-height: 1.2rem;
-    font-size: 0.8rem;
-    letter-spacing: 0.06em;
-    color: var(--amber);
-    opacity: 0;
-    transform: translateY(6px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-  }
-
-  .note.show { opacity: 1; transform: translateY(0); }
-  .note.err  { color: #ff8f6b; }
-
-  footer {
-    position: fixed;
-    bottom: 1.6rem;
-    left: 0; right: 0;
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    gap: 1.6rem;
-    font-size: 0.74rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: rgba(246, 231, 215, 0.3);
-  }
-
-  footer a {
-    color: inherit;
-    text-decoration: none;
-    cursor: none;
-    transition: color 0.3s ease;
-  }
-
-  footer a:hover { color: var(--amber); }
-
-  /* ---------- custom cursor ---------- */
-
-  .dot, .ring {
-    position: fixed;
-    top: 0; left: 0;
-    z-index: 6;
-    pointer-events: none;
-    border-radius: 50%;
-  }
-
-  .dot {
-    width: 6px; height: 6px;
-    margin: -3px 0 0 -3px;
-    background: var(--gold);
-  }
-
-  .ring {
-    width: 34px; height: 34px;
-    margin: -17px 0 0 -17px;
-    border: 1px solid rgba(255, 165, 82, 0.6);
-    transition: width 0.3s ease, height 0.3s ease, margin 0.3s ease, background 0.3s ease, border-color 0.3s ease;
-  }
-
-  .ring.grow {
-    width: 62px; height: 62px;
-    margin: -31px 0 0 -31px;
-    background: rgba(255, 165, 82, 0.12);
-    border-color: rgba(255, 211, 155, 0.9);
-  }
-
-  /* ---------- entrance ---------- */
-
-  .rise {
-    opacity: 0;
-    transform: translateY(26px);
-    animation: rise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-
-  @keyframes rise {
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  h1 .ch {
-    opacity: 0;
-    animation: drop 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-
-  @keyframes drop {
-    from { opacity: 0; transform: translateY(0.5em) rotateX(-70deg); }
-    to   { opacity: 1; transform: translateY(0) rotateX(0); }
-  }
-
-  @media (max-width: 640px) {
-    body { cursor: auto; }
-    .dot, .ring { display: none; }
-    input, button, footer a, h1 .ch { cursor: auto; }
-    form { flex-direction: column; border-radius: 1.5rem; }
-    input { width: min(19rem, 74vw); text-align: center; }
-    .tagline { letter-spacing: 0.3em; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    *, *::after { animation: none !important; transition-duration: 0.01ms !important; }
-    .rise, h1 .ch { opacity: 1; transform: none; }
-    .grain { display: none; }
-  }
-</style>
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://made-o.com/#organization",
+      "name": "Made Original",
+      "alternateName": "Made-O",
+      "url": "https://made-o.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://made-o.com/assets/img/logo.png",
+        "width": 512,
+        "height": 512
+      },
+      "image": "https://made-o.com/assets/img/og-image.png",
+      "email": "hello@made-o.com",
+      "description": "Consulting for export-oriented pump, machinery and engineering manufacturers — getting product data, documentation and dealer systems ready for international markets.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "hello@made-o.com",
+        "availableLanguage": ["English"]
+      },
+      "areaServed": [
+        {"@type": "Country", "name": "India"},
+        {"@type": "Place", "name": "Worldwide"}
+      ],
+      "knowsAbout": [
+        "Product Information Management",
+        "Digital Catalogues",
+        "3D Catalogues",
+        "Dealer Portals",
+        "Technical Documentation",
+        "EU Machinery Regulation",
+        "Industrial Digital Transformation"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services and products",
+        "itemListElement": [
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Product data consulting", "description": "Structuring and enriching product information so it is complete, consistent and ready for every market, language and channel."}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Technical documentation for export", "description": "Organising manuals, certificates and technical documents so they are translatable and compliant, including the EU Machinery Regulation."}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Dealer systems", "description": "Catalogues, pricing and product data for distributors abroad."}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Pump Connect", "description": "A ready-to-adapt product catalogue and dealer platform for pump manufacturers."}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Machinery Knowledge Platform", "description": "One searchable home for machine documentation, spare parts and technical data."}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Customer Delivery Portal", "description": "Self-service access to manuals, certificates and product data for customers."}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Dealer Delivery Portal", "description": "Current catalogues, pricing and technical content for dealer networks in one branded portal."}}
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://made-o.com/#website",
+      "url": "https://made-o.com/",
+      "name": "Made Original",
+      "inLanguage": "en",
+      "publisher": {"@id": "https://made-o.com/#organization"}
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://made-o.com/#webpage",
+      "url": "https://made-o.com/",
+      "name": "Export-Ready Product Data & Dealer Portals | Made Original",
+      "description": "Consulting for pump, machinery and engineering manufacturers: export-ready product data, technical documentation, digital catalogues and dealer portals.",
+      "inLanguage": "en",
+      "isPartOf": {"@id": "https://made-o.com/#website"},
+      "about": {"@id": "https://made-o.com/#organization"},
+      "primaryImageOfPage": {"@type": "ImageObject", "url": "https://made-o.com/assets/img/og-image.png", "width": 1200, "height": 630}
+    }
+  ]
+}
+</script>
 </head>
-<body>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
 
-<canvas id="field"></canvas>
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="mark" viewBox="12 6 96 108">
+    <path fill="currentColor" fill-rule="evenodd" d="M60 6L108 33V87L60 114L12 87V33Z M38 60a22 22 0 1 0 44 0a22 22 0 1 0 -44 0Z"/>
+  </symbol>
+</svg>
 
-<div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
-<div class="spotlight" aria-hidden="true"></div>
-<div class="grain" aria-hidden="true"></div>
+<header id="header">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="#top" aria-label="Made Original home">
+        <svg class="mark" aria-hidden="true"><use href="#mark"/></svg>
+        <span class="wordmark">MADE<span class="bar"></span><span class="o">O</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#products">Products</a>
+        <a href="#process">How we work</a>
+        <a href="#industries">Industries</a>
+        <a href="#technology">Technology</a>
+        <a href="#insights">Insights</a>
+      </div>
+      <div class="nav-cta">
+        <a class="btn btn-primary" href="#contact">Book a consultation</a>
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+          <svg class="i-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+          <svg class="i-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services">Services</a>
+    <a href="#products">Products</a>
+    <a href="#process">How we work</a>
+    <a href="#industries">Industries</a>
+    <a href="#technology">Technology</a>
+    <a href="#insights">Insights</a>
+    <a class="btn btn-primary" href="#contact">Book a consultation</a>
+  </div>
+</header>
 
-<main>
-  <div class="eyebrow rise" style="animation-delay: 0.1s"><i class="pulse"></i> In the making</div>
+<main id="main">
 
-  <h1 id="title" aria-label="Made Original">Made Original</h1>
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow">Consulting for export-oriented manufacturers</div>
+      <h1>Get export&#8209;ready, from the <span class="soft">product data up.</span></h1>
+      <p class="lead">Made Original helps pump, machinery, and engineering manufacturers get their product data, documentation, and dealer systems ready for international markets — with consulting that ends in working systems, not slide decks.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#contact">Book a consultation</a>
+        <a class="btn btn-ghost" href="#products">See what we build</a>
+      </div>
+      <div class="hero-meta">
+        <span class="pill">Flexible to your requirements</span>
+        <span class="pill">Built to scale</span>
+        <span class="pill">MVP in weeks</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <svg class="schematic" viewBox="30 50 545 460" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Scattered product data flowing through a focal point and resolving into a structured digital product">
+        <!-- faint grid -->
+        <g class="sch-line" stroke-width="1" opacity="0.3">
+          <path d="M40 70 H560 M40 190 H560 M40 310 H560 M40 430 H560"/>
+          <path d="M170 60 V500 M300 60 V500 M430 60 V500"/>
+        </g>
 
-  <p class="tagline rise" style="animation-delay: 1.35s">Coming Soon</p>
+        <!-- scattered raw data fragments (left) -->
+        <g class="sch-line" stroke-width="1.4" fill="none">
+          <rect class="draw" x="58" y="112" width="56" height="34" rx="7" transform="rotate(-10 86 129)"/>
+          <rect class="draw d2" x="126" y="188" width="48" height="30" rx="7" transform="rotate(8 150 203)"/>
+          <rect class="draw d2" x="52" y="240" width="62" height="26" rx="7" transform="rotate(-5 83 253)"/>
+          <rect class="draw d3" x="136" y="292" width="42" height="42" rx="7" transform="rotate(13 157 313)"/>
+        </g>
+        <g class="sch-accent-fill" opacity="0.85">
+          <circle cx="104" cy="86" r="3.4"/>
+          <circle cx="188" cy="150" r="3.4"/>
+          <circle cx="66" cy="308" r="3.4"/>
+          <circle cx="164" cy="360" r="3.4"/>
+        </g>
 
-  <p class="blurb rise" style="animation-delay: 1.5s">
-    Something crafted with intent, warmth and a little patience.
-    Leave your email and you'll be the first through the door.
-  </p>
+        <!-- flow curves converging to the focal point -->
+        <g class="sch-accent" stroke-width="1.6" fill="none" opacity="0.9">
+          <path class="draw d2" d="M118 132 C 224 156, 258 244, 314 284"/>
+          <path class="draw d2" d="M152 206 C 232 224, 268 258, 316 288"/>
+          <path class="draw d3" d="M110 254 C 214 274, 262 286, 316 294"/>
+          <path class="draw d3" d="M166 320 C 244 322, 282 306, 316 300"/>
+        </g>
 
-  <form id="signup" class="rise" style="animation-delay: 1.65s" novalidate>
-    <input id="email" type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email" />
-    <button type="submit">Notify me</button>
-  </form>
+        <!-- focal point: synthesis -->
+        <circle class="sch-accent" cx="330" cy="291" r="26" stroke-width="1.5" fill="none" opacity="0.65"/>
+        <circle class="sch-fill-surface sch-accent" cx="330" cy="291" r="14" stroke-width="1.6"/>
+        <circle class="sch-accent-fill" cx="330" cy="291" r="5.5"/>
+        <g class="sch-accent" stroke-width="1.6" stroke-linecap="round" opacity="0.85">
+          <path d="M330 253 v-13 M330 329 v13 M292 291 h-13 M368 291 h13"/>
+        </g>
 
-  <p class="note" id="note" role="status" aria-live="polite"></p>
+        <!-- feed into the product -->
+        <path class="sch-accent draw d3" stroke-width="1.6" d="M356 291 H396"/>
+
+        <!-- structured digital product (right) -->
+        <rect class="sch-fill-surface sch-ink" x="396" y="176" width="168" height="230" rx="16" stroke-width="1.9"/>
+        <path class="sch-line" stroke-width="1.4" d="M396 212 H564"/>
+        <circle class="sch-accent-fill" cx="416" cy="194" r="4"/>
+        <g class="sch-line" stroke-width="1.4" fill="none" opacity="0.8">
+          <rect x="430" y="189" width="64" height="10" rx="5"/>
+        </g>
+        <g class="sch-line" stroke-width="7" stroke-linecap="round" opacity="0.55">
+          <path d="M418 242 H544"/>
+          <path d="M418 266 H520"/>
+          <path d="M418 290 H536"/>
+          <path d="M418 340 H504"/>
+          <path d="M418 364 H528"/>
+        </g>
+        <path class="sch-accent" stroke-width="7" stroke-linecap="round" d="M418 314 H476"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAND -->
+<section class="trust" aria-label="At a glance">
+  <div class="wrap">
+    <div class="trust-grid">
+      <div class="trust-item">
+        <div class="k">AI-accelerated builds</div>
+        <div class="v">Working MVPs in weeks, not quarters</div>
+      </div>
+      <div class="trust-item">
+        <div class="k">Medium &amp; large enterprises</div>
+        <div class="v">Built for serious manufacturing</div>
+      </div>
+      <div class="trust-item">
+        <div class="k">India &amp; worldwide</div>
+        <div class="v">Local delivery, global standards</div>
+      </div>
+      <div class="trust-item">
+        <div class="k">Pump · Mechanical · Engineering</div>
+        <div class="v">Deep in industrial product data</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">What we do</div>
+      <h2>Consulting that ends in something you can ship.</h2>
+      <p>Three things decide whether your products sell abroad: the data behind them, the documents that ship with them, and the systems your dealers use. We get each one export-ready — and build the working systems, not just the strategy.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc">
+        <svg class="ic" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="5" width="24" height="22" rx="2"/><path d="M4 11h24M10 17h12M10 21h8"/></svg>
+        <h3>Product data, market-ready</h3>
+        <p>We structure and enrich your product information so it's complete, consistent, and ready for every market, language, and channel you sell into.</p>
+      </div>
+      <div class="svc">
+        <svg class="ic" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="6" width="24" height="16" rx="2"/><path d="M11 26h10M16 22v4"/><path d="M9 14l3 3 5-6 4 4"/></svg>
+        <h3>Documentation that clears the border</h3>
+        <p>We get manuals, certificates, and technical documents organised, translatable, and compliant for the markets you're entering — EU Machinery Regulation included.</p>
+      </div>
+      <div class="svc">
+        <svg class="ic" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="16" cy="16" r="4"/><circle cx="6" cy="7" r="3"/><circle cx="26" cy="7" r="3"/><circle cx="6" cy="25" r="3"/><circle cx="26" cy="25" r="3"/><path d="M13 14l-5-5M19 14l5-5M13 18l-5 5M19 18l5 5"/></svg>
+        <h3>Dealer systems that sell for you</h3>
+        <p>We give your distributors abroad the catalogues, pricing, and product data they need to specify and order — without waiting on your inbox.</p>
+      </div>
+      <div class="phase2">
+        <div>
+          <div class="t">Design services — arriving in Phase 2</div>
+          <p class="d">Product and experience design for industrial interfaces: dealer portals, configurators, and technical documentation.</p>
+        </div>
+        <span class="pill">Coming soon</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="section products on-dark" id="products">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">The tools we build</div>
+      <h2>How the outcome gets delivered.</h2>
+      <p>Once we know what export-readiness means for you, these are the systems we build to get you there — each a proven starting point, adapted to your catalogue and data rather than rebuilt from scratch.</p>
+    </div>
+
+    <div class="prod-lead">
+      <div>
+        <div class="tag">Flagship</div>
+        <h3>Pump Connect</h3>
+        <p>A ready-to-adapt product catalogue and dealer platform for pump manufacturers. Structured pump data, guided selection and specification, and a portal your dealers and customers can rely on — live in weeks, not a year.</p>
+        <a class="btn btn-ghost-inv" href="#contact">Request a walkthrough</a>
+      </div>
+      <dl class="prod-visual" aria-label="Example pump specification data">
+        <div class="spec-row"><dt>Model series</dt><dd>CN-Series</dd></div>
+        <div class="spec-row"><dt>Flow range</dt><dd>10–640 m³/h</dd></div>
+        <div class="spec-row"><dt>Head</dt><dd>5–160 m</dd></div>
+        <div class="spec-row"><dt>Material grade</dt><dd class="b">CF8M / CD4MCu</dd></div>
+        <div class="spec-row"><dt>Documents</dt><dd>manual · curve · CE</dd></div>
+        <div class="spec-row"><dt>Dealer access</dt><dd class="b">enabled</dd></div>
+      </dl>
+    </div>
+
+    <div class="prod-grid">
+      <div class="prod">
+        <div class="num">01</div>
+        <h3>Machinery Knowledge Platform</h3>
+        <p>One searchable home for machine documentation, spare parts, and technical data — so your teams and customers stop hunting through folders of PDFs.</p>
+      </div>
+      <div class="prod">
+        <div class="num">02</div>
+        <h3>Customer Delivery Portal</h3>
+        <p>Give customers self-service access to the manuals, certificates, and product data tied to exactly what they bought from you.</p>
+      </div>
+      <div class="prod">
+        <div class="num">03</div>
+        <h3>Dealer Delivery Portal</h3>
+        <p>Equip your dealer network with current catalogues, pricing, and technical content in one branded portal they log into daily.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE WORK -->
+<section class="section" id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">How we work</div>
+      <h2>From your product data to a working solution, in four moves.</h2>
+      <p>A short, honest path. You see something real early, and shape it before it scales.</p>
+    </div>
+    <ol class="steps">
+      <li class="step">
+        <div class="n">Step 01</div><div class="bar"></div>
+        <h3>Understand</h3>
+        <p>We map your products, your data, and the people who use them — dealers, engineers, and customers alike.</p>
+      </li>
+      <li class="step">
+        <div class="n">Step 02</div><div class="bar"></div>
+        <h3>Prototype</h3>
+        <p>We build a working MVP with AI, so you can click through it — not just read about it.</p>
+      </li>
+      <li class="step">
+        <div class="n">Step 03</div><div class="bar"></div>
+        <h3>Validate</h3>
+        <p>You test it with real users and real data. We refine what matters and drop what doesn't.</p>
+      </li>
+      <li class="step">
+        <div class="n">Step 04</div><div class="bar"></div>
+        <h3>Scale</h3>
+        <p>We grow the solution into production — flexible enough to keep changing as your business does.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="section alt" id="industries">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Industries</div>
+      <h2>Where we start.</h2>
+      <p>We focus where product data is most complex and most valuable — and expand from there.</p>
+    </div>
+    <div class="ind-grid">
+      <div class="ind">
+        <div class="top">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="32" cy="32" r="18"/><circle cx="32" cy="32" r="6"/><path d="M32 14v-6M32 56v-6M14 32h-6M56 32h-6M45 19l4-4M15 49l4-4M45 45l4 4M15 15l4 4"/></svg>
+        </div>
+        <div class="body">
+          <h3>Pump manufacturing</h3>
+          <p>Selection logic, performance curves, and dealer catalogues for centrifugal, submersible, and process pumps.</p>
+        </div>
+      </div>
+      <div class="ind">
+        <div class="top">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="12" y="20" width="40" height="28" rx="2"/><path d="M20 20v-6h12v6M24 34h16M24 40h10"/><circle cx="44" cy="14" r="4"/></svg>
+        </div>
+        <div class="body">
+          <h3>Mechanical engineering</h3>
+          <p>Component libraries, assemblies, and spare-parts data made findable for engineers and buyers.</p>
+        </div>
+      </div>
+      <div class="ind">
+        <div class="top">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14 50V22l18-10 18 10v28"/><path d="M14 50h36M24 50V36h16v14M32 24v6"/></svg>
+        </div>
+        <div class="body">
+          <h3>Industrial equipment</h3>
+          <p>Technical documentation and product information hubs for engineered-to-order machinery.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="section" id="why">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Why Made Original</div>
+      <h2>Three promises we design around.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="big"><span class="dot"></span>Flexible</div>
+        <p>Shaped to your requirements, not forced into a rigid template. Your process leads; the software follows.</p>
+      </div>
+      <div class="why-item">
+        <div class="big"><span class="dot"></span>Scalable</div>
+        <p>Architected to grow from a single catalogue to your entire product line and dealer network.</p>
+      </div>
+      <div class="why-item">
+        <div class="big"><span class="dot"></span>Viable</div>
+        <p>An MVP you can put in front of real customers quickly — then evolve with evidence, not guesses.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNOLOGY PARTNER -->
+<section class="section alt" id="technology">
+  <div class="wrap tech-grid">
+    <div>
+      <div class="eyebrow">Technology partner</div>
+      <h2>A proven platform under the hood.</h2>
+      <p>Made Original builds on NovaDB, an enterprise product-information platform by Noxum. It gives your solution a scalable, well-tested foundation — so our energy goes into what makes your product yours, not into reinventing infrastructure.</p>
+      <a class="btn btn-ghost" href="#contact">Ask how it fits your stack</a>
+    </div>
+    <div class="tech-card">
+      <div class="tech-logo">NovaDB <span>by Noxum</span></div>
+      <div class="tech-points">
+        <div class="tp"><span class="tpi" aria-hidden="true">◆</span>Enterprise PIM and content foundation</div>
+        <div class="tp"><span class="tpi" aria-hidden="true">◆</span>Scales with your catalogue and channels</div>
+        <div class="tp"><span class="tpi" aria-hidden="true">◆</span>European engineering, proven across industry</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSIGHTS -->
+<section class="section" id="insights">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Insights</div>
+      <h2>Notes on industrial product data.</h2>
+      <p>Practical writing on catalogues, portals, and where industrial digital experience is heading. The first notes are being written now.</p>
+    </div>
+    <div class="blog-grid">
+      <article class="post">
+        <span class="cat">Pump Connect</span>
+        <h3>What a modern pump catalogue actually needs</h3>
+        <p>Beyond a PDF price list: selection logic, live curves, and dealer-ready data that keeps your customers specifying the right pump.</p>
+        <span class="soon">Publishing soon</span>
+      </article>
+      <article class="post">
+        <span class="cat">Digital catalogue</span>
+        <h3>Digital catalogues vs. PDF price lists: the real cost</h3>
+        <p>Static documents look cheap until you count the reprints, the wrong orders, and the support calls. Here's the honest comparison.</p>
+        <span class="soon">Publishing soon</span>
+      </article>
+      <article class="post">
+        <span class="cat">3D catalogue</span>
+        <h3>Why 3D catalogues are moving from nice-to-have to expected</h3>
+        <p>When buyers can rotate, configure, and download CAD in-browser, a flat catalogue starts to feel like a missing feature.</p>
+        <span class="soon">Publishing soon</span>
+      </article>
+      <article class="post">
+        <span class="cat">Industry trends</span>
+        <h3>Getting found by AI: structured data as an SEO strategy</h3>
+        <p>Assistants answer from well-structured product information. Clean data isn't just internal hygiene — it's how you get recommended.</p>
+        <span class="soon">Publishing soon</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact on-dark" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="eyebrow">Start a conversation</div>
+      <h2>Let's build your first digital product.</h2>
+      <p class="lead">Tell us about your products and where the data lives today. We'll come back with a concrete first step — usually a prototype you can see.</p>
+      <div class="direct">
+        <div class="lbl">Prefer email?</div>
+        <a href="mailto:hello@made-o.com">hello@made-o.com</a>
+      </div>
+    </div>
+    <form class="form" id="enquiry" novalidate>
+      <div class="field-row">
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input id="f-name" name="name" type="text" placeholder="Full name" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="f-company">Company</label>
+          <input id="f-company" name="company" type="text" placeholder="Company name" autocomplete="organization">
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-email">Work email</label>
+        <input id="f-email" name="email" type="email" placeholder="you@company.com" autocomplete="email" inputmode="email" required>
+      </div>
+      <div class="field">
+        <label for="f-msg">What are you trying to build?</label>
+        <textarea id="f-msg" name="message" placeholder="A few lines about your products and goals" required></textarea>
+      </div>
+      <button class="btn btn-primary" type="submit">Send enquiry</button>
+      <small>Opens your email app addressed to hello@made-o.com.</small>
+      <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
 </main>
 
-<footer class="rise" style="animation-delay: 1.9s">
-  <a href="#">Instagram</a>
-  <a href="#">Twitter</a>
-  <a href="#">hello@madeoriginal.com</a>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="#top" aria-label="Made Original home">
+          <svg class="mark mark-lg" aria-hidden="true"><use href="#mark"/></svg>
+          <span class="wm-stack"><span class="wordmark">MADE<span class="bar"></span><span class="o">O</span></span><span class="wm-sub">ORIGINAL</span></span>
+        </a>
+        <p>Getting export-oriented pump, machinery, and engineering manufacturers ready for international markets — data, documentation, and dealer systems.</p>
+      </div>
+      <div class="foot-cols">
+        <nav class="foot-col" aria-label="Explore">
+          <h2>Explore</h2>
+          <a href="#services">Services</a>
+          <a href="#products">Products</a>
+          <a href="#process">How we work</a>
+          <a href="#industries">Industries</a>
+        </nav>
+        <nav class="foot-col" aria-label="Products">
+          <h2>Products</h2>
+          <a href="#products">Pump Connect</a>
+          <a href="#products">Machinery Knowledge Platform</a>
+          <a href="#products">Customer Delivery Portal</a>
+          <a href="#products">Dealer Delivery Portal</a>
+        </nav>
+        <nav class="foot-col" aria-label="Company">
+          <h2>Company</h2>
+          <a href="#insights">Insights</a>
+          <a href="#contact">Contact</a>
+          <a href="mailto:hello@made-o.com">hello@made-o.com</a>
+        </nav>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year">2026</span> Made Original · made-o.com</span>
+      <a href="mailto:hello@made-o.com">hello@made-o.com</a>
+    </div>
+  </div>
 </footer>
 
-<div class="ring" aria-hidden="true"></div>
-<div class="dot" aria-hidden="true"></div>
-
-<script>
-(() => {
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---- split the heading into animated characters ---- */
-  const title = document.getElementById('title');
-  const words = title.textContent.trim().split(' ');
-  title.textContent = '';
-  let index = 0;
-
-  words.forEach((word, w) => {
-    const span = document.createElement('span');
-    span.className = 'word';
-    [...word].forEach(char => {
-      const c = document.createElement('span');
-      c.className = 'ch';
-      c.textContent = char;
-      c.style.animationDelay = (0.35 + index * 0.045) + 's';
-      span.appendChild(c);
-      index++;
-    });
-    title.appendChild(span);
-    if (w < words.length - 1) title.appendChild(document.createTextNode(' '));
-  });
-
-  /* ---- pointer: spotlight + custom cursor ---- */
-  const spot = document.querySelector('.spotlight');
-  const dot  = document.querySelector('.dot');
-  const ring = document.querySelector('.ring');
-
-  const pointer = { x: innerWidth / 2, y: innerHeight / 2 };
-  const soft    = { x: pointer.x, y: pointer.y };
-  let hasPointer = false;
-
-  addEventListener('pointermove', e => {
-    pointer.x = e.clientX;
-    pointer.y = e.clientY;
-    hasPointer = true;
-    dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-  }, { passive: true });
-
-  addEventListener('pointerdown', () => ring.classList.add('grow'));
-  addEventListener('pointerup',   () => ring.classList.remove('grow'));
-
-  document.querySelectorAll('a, button, input, .ch').forEach(el => {
-    el.addEventListener('pointerenter', () => ring.classList.add('grow'));
-    el.addEventListener('pointerleave', () => ring.classList.remove('grow'));
-  });
-
-  /* ---- ember particle field ---- */
-  const canvas = document.getElementById('field');
-  const ctx = canvas.getContext('2d');
-  const embers = [];
-  let dpr = 1;
-
-  function resize() {
-    dpr = Math.min(devicePixelRatio || 1, 2);
-    canvas.width  = innerWidth  * dpr;
-    canvas.height = innerHeight * dpr;
-    canvas.style.width  = innerWidth + 'px';
-    canvas.style.height = innerHeight + 'px';
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  }
-
-  function seed() {
-    embers.length = 0;
-    const count = Math.round(Math.min(110, innerWidth / 12));
-    for (let i = 0; i < count; i++) {
-      embers.push({
-        x: Math.random() * innerWidth,
-        y: Math.random() * innerHeight,
-        r: Math.random() * 1.9 + 0.5,
-        vx: (Math.random() - 0.5) * 0.22,
-        vy: -Math.random() * 0.32 - 0.05,
-        hue: 18 + Math.random() * 26,
-        a: Math.random() * 0.5 + 0.18,
-        tw: Math.random() * Math.PI * 2
-      });
-    }
-  }
-
-  resize();
-  seed();
-  addEventListener('resize', () => { resize(); seed(); });
-
-  function frame() {
-    ctx.clearRect(0, 0, innerWidth, innerHeight);
-
-    soft.x += (pointer.x - soft.x) * 0.09;
-    soft.y += (pointer.y - soft.y) * 0.09;
-    spot.style.transform = `translate(${soft.x}px, ${soft.y}px)`;
-    ring.style.transform = `translate(${soft.x}px, ${soft.y}px)`;
-    spot.style.opacity = hasPointer ? 1 : 0.4;
-
-    for (const p of embers) {
-      // embers drift away from the pointer, like heat pushing air
-      const dx = p.x - pointer.x;
-      const dy = p.y - pointer.y;
-      const d2 = dx * dx + dy * dy;
-      if (d2 < 26000 && d2 > 1) {
-        const f = (1 - d2 / 26000) * 0.85;
-        const d = Math.sqrt(d2);
-        p.vx += (dx / d) * f * 0.5;
-        p.vy += (dy / d) * f * 0.5;
-      }
-
-      p.vx *= 0.985;
-      p.vy = p.vy * 0.985 - 0.004;
-      p.x += p.vx;
-      p.y += p.vy;
-      p.tw += 0.04;
-
-      if (p.y < -12) { p.y = innerHeight + 12; p.x = Math.random() * innerWidth; p.vy = -Math.random() * 0.32 - 0.05; }
-      if (p.y > innerHeight + 12) p.y = -12;
-      if (p.x < -12) p.x = innerWidth + 12;
-      if (p.x > innerWidth + 12) p.x = -12;
-
-      const alpha = p.a * (0.65 + Math.sin(p.tw) * 0.35);
-      const glow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 6);
-      glow.addColorStop(0, `hsla(${p.hue}, 100%, 68%, ${alpha})`);
-      glow.addColorStop(1, `hsla(${p.hue}, 100%, 55%, 0)`);
-      ctx.fillStyle = glow;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r * 6, 0, Math.PI * 2);
-      ctx.fill();
-    }
-
-    requestAnimationFrame(frame);
-  }
-
-  if (reduced) {
-    spot.style.opacity = 0;
-    ctx.clearRect(0, 0, innerWidth, innerHeight);
-  } else {
-    frame();
-  }
-
-  /* ---- heading reacts to pointer proximity ---- */
-  if (!reduced) {
-    const chars = [...document.querySelectorAll('.ch')];
-    addEventListener('pointermove', e => {
-      for (const c of chars) {
-        const b = c.getBoundingClientRect();
-        const dx = e.clientX - (b.left + b.width / 2);
-        const dy = e.clientY - (b.top + b.height / 2);
-        const dist = Math.hypot(dx, dy);
-        if (dist < 170) {
-          const pull = (1 - dist / 170) * 14;
-          c.style.translate = `${-dx / dist * pull}px ${-dy / dist * pull}px`;
-        } else if (c.style.translate) {
-          c.style.translate = '';
-        }
-      }
-    }, { passive: true });
-  }
-
-  /* ---- magnetic button + ripple ---- */
-  const button = document.querySelector('button');
-
-  if (!reduced) {
-    button.addEventListener('pointermove', e => {
-      const b = button.getBoundingClientRect();
-      const mx = e.clientX - (b.left + b.width / 2);
-      const my = e.clientY - (b.top + b.height / 2);
-      button.style.transform = `translate(${mx * 0.25}px, ${my * 0.35}px)`;
-    });
-    button.addEventListener('pointerleave', () => { button.style.transform = ''; });
-  }
-
-  button.addEventListener('pointerdown', e => {
-    const b = button.getBoundingClientRect();
-    const r = document.createElement('span');
-    r.className = 'ripple';
-    r.style.width = r.style.height = '18px';
-    r.style.left = (e.clientX - b.left) + 'px';
-    r.style.top  = (e.clientY - b.top) + 'px';
-    button.appendChild(r);
-    setTimeout(() => r.remove(), 700);
-  });
-
-  /* ---- signup ---- */
-  const form  = document.getElementById('signup');
-  const email = document.getElementById('email');
-  const note  = document.getElementById('note');
-
-  function say(message, isError) {
-    note.textContent = message;
-    note.classList.toggle('err', !!isError);
-    note.classList.add('show');
-  }
-
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const value = email.value.trim();
-    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
-
-    if (!valid) {
-      say('That email looks incomplete — mind checking it?', true);
-      form.animate(
-        [{ transform: 'translateX(0)' }, { transform: 'translateX(-8px)' },
-         { transform: 'translateX(8px)' }, { transform: 'translateX(0)' }],
-        { duration: 320, easing: 'ease-in-out' }
-      );
-      email.focus();
-      return;
-    }
-
-    say("You're on the list. We'll be in touch.", false);
-    form.reset();
-    email.blur();
-    burst();
-  });
-
-  /* celebratory ember burst on a successful signup */
-  function burst() {
-    if (reduced) return;
-    const b = form.getBoundingClientRect();
-    const cx = b.left + b.width / 2;
-    const cy = b.top + b.height / 2;
-    for (let i = 0; i < 34; i++) {
-      const angle = Math.random() * Math.PI * 2;
-      const speed = Math.random() * 3.4 + 1.2;
-      embers.push({
-        x: cx, y: cy,
-        r: Math.random() * 2 + 0.8,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed,
-        hue: 22 + Math.random() * 22,
-        a: 0.8,
-        tw: Math.random() * Math.PI * 2
-      });
-    }
-    if (embers.length > 260) embers.splice(0, embers.length - 260);
-  }
-})();
-</script>
 </body>
 </html>
