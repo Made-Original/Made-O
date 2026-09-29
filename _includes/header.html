@@ -1,0 +1,30 @@
+{%- assign s = site.data.settings -%}
+{%- if page.home -%}{%- assign base = "" -%}{%- else -%}{%- assign base = "/" | relative_url -%}{%- endif -%}
+<header id="header">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="{% if page.home %}#top{% else %}{{ '/' | relative_url }}{% endif %}" aria-label="{{ s.site_name | escape }} home">
+        <svg class="mark" aria-hidden="true"><use href="#mark"/></svg>
+        <span class="wordmark">MADE<span class="bar"></span><span class="o">O</span></span>
+      </a>
+      <div class="nav-links">
+        {%- for item in s.nav %}
+        <a href="{{ base }}#{{ item.target }}">{{ item.label | escape }}</a>
+        {%- endfor %}
+      </div>
+      <div class="nav-cta">
+        <a class="btn btn-primary" href="{{ base }}#contact">{{ s.cta_label | escape }}</a>
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+          <svg class="i-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+          <svg class="i-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    {%- for item in s.nav %}
+    <a href="{{ base }}#{{ item.target }}">{{ item.label | escape }}</a>
+    {%- endfor %}
+    <a class="btn btn-primary" href="{{ base }}#contact">{{ s.cta_label | escape }}</a>
+  </div>
+</header>

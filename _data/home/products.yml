@@ -1,0 +1,37 @@
+eyebrow: The tools we build
+title: How the outcome gets delivered.
+intro: "Once we know what export-readiness means for you, these are the systems we build to get you there — each a proven starting point, adapted to your catalogue and data rather than rebuilt from scratch."
+featured:
+  tag: Flagship
+  name: Pump Connect
+  text: "A ready-to-adapt product catalogue and dealer platform for pump manufacturers. Structured pump data, guided selection and specification, and a portal your dealers and customers can rely on — live in weeks, not a year."
+  cta_label: Request a walkthrough
+  # Optional: a screenshot here replaces the spec card.
+  image: ""
+  image_alt: ""
+  specs:
+    - label: Model series
+      value: CN-Series
+      highlight: false
+    - label: Flow range
+      value: "10–640 m³/h"
+      highlight: false
+    - label: Head
+      value: "5–160 m"
+      highlight: false
+    - label: Material grade
+      value: CF8M / CD4MCu
+      highlight: true
+    - label: Documents
+      value: "manual · curve · CE"
+      highlight: false
+    - label: Dealer access
+      value: enabled
+      highlight: true
+items:
+  - name: Machinery Knowledge Platform
+    text: "One searchable home for machine documentation, spare parts, and technical data — so your teams and customers stop hunting through folders of PDFs."
+  - name: Customer Delivery Portal
+    text: "Give customers self-service access to the manuals, certificates, and product data tied to exactly what they bought from you."
+  - name: Dealer Delivery Portal
+    text: "Equip your dealer network with current catalogues, pricing, and technical content in one branded portal they log into daily."

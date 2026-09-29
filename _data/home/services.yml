@@ -1,0 +1,18 @@
+eyebrow: What we do
+title: Consulting that ends in something you can ship.
+intro: "Three things decide whether your products sell abroad: the data behind them, the documents that ship with them, and the systems your dealers use. We get each one export-ready — and build the working systems, not just the strategy."
+items:
+  - icon: data
+    title: Product data, market-ready
+    text: "We structure and enrich your product information so it's complete, consistent, and ready for every market, language, and channel you sell into."
+  - icon: docs
+    title: Documentation that clears the border
+    text: "We get manuals, certificates, and technical documents organised, translatable, and compliant for the markets you're entering — EU Machinery Regulation included."
+  - icon: network
+    title: Dealer systems that sell for you
+    text: "We give your distributors abroad the catalogues, pricing, and product data they need to specify and order — without waiting on your inbox."
+upcoming:
+  show: true
+  title: Design services — arriving in Phase 2
+  text: "Product and experience design for industrial interfaces: dealer portals, configurators, and technical documentation."
+  badge: Coming soon

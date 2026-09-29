@@ -1,0 +1,300 @@
+# Pages CMS configuration — https://pagescms.org/docs/configuration/
+# Editors sign in at https://app.pagescms.org with GitHub and open this repository.
+# Every save is a commit; GitHub Pages rebuilds the site about a minute later.
+
+media:
+  input: assets/uploads
+  output: /assets/uploads
+
+content:
+  # ---------------------------------------------------------------- Insights
+  - name: insights
+    label: Insights (blog)
+    type: collection
+    path: _insights
+    filename: "{primary}.md"
+    format: yaml-frontmatter
+    view:
+      fields: [title, category, date, coming_soon]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: category
+        label: Category
+        type: string
+        description: Short label shown on the card, e.g. "Pump Connect".
+        required: true
+      - name: summary
+        label: Summary
+        type: text
+        description: One or two sentences. Shown on the card and used as the Google description.
+        required: true
+      - name: date
+        label: Publish date
+        type: date
+        required: true
+      - name: image
+        label: Cover image
+        type: image
+        description: Optional. Landscape (16:9) works best, at least 1200px wide.
+      - name: image_alt
+        label: Cover image description
+        type: string
+        description: Describe the image for screen readers and search engines.
+      - name: coming_soon
+        label: Coming soon
+        type: boolean
+        description: On = card shows "Publishing soon" and the article is hidden from search. Turn off when the article is written.
+        default: false
+      - name: published
+        label: Show on site
+        type: boolean
+        description: Turn off to hide this note completely.
+        default: true
+      - name: body
+        label: Article
+        type: rich-text
+
+  # ---------------------------------------------------------------- Home page sections
+  - name: hero
+    label: "Home · Hero"
+    type: file
+    path: _data/home/hero.yml
+    format: yaml
+    fields:
+      - { name: eyebrow, label: Eyebrow (small line above the headline), type: string }
+      - { name: headline, label: Headline, type: string, required: true }
+      - { name: headline_highlight, label: Headline — red part, type: string, description: "Shown in brand red after the headline." }
+      - { name: lead, label: Intro paragraph, type: text }
+      - { name: primary_label, label: Main button text, type: string }
+      - { name: secondary_label, label: Second button text, type: string }
+      - { name: tags, label: Tags, type: string, list: true }
+      - { name: image, label: Hero image, type: image, description: "Optional. Leave empty to keep the animated illustration. 4:3 landscape works best." }
+      - { name: image_alt, label: Hero image description, type: string }
+
+  - name: trust
+    label: "Home · Highlights band"
+    type: file
+    path: _data/home/trust.yml
+    format: yaml
+    fields:
+      - name: items
+        label: Highlights
+        type: object
+        list: true
+        fields:
+          - { name: title, label: Title, type: string }
+          - { name: text, label: Text, type: string }
+
+  - name: services
+    label: "Home · Services"
+    type: file
+    path: _data/home/services.yml
+    format: yaml
+    fields:
+      - { name: eyebrow, label: Eyebrow, type: string }
+      - { name: title, label: Heading, type: string }
+      - { name: intro, label: Intro, type: text }
+      - name: items
+        label: Services
+        type: object
+        list: true
+        fields:
+          - name: icon
+            label: Icon
+            type: select
+            options:
+              values:
+                - { value: data, label: Product data }
+                - { value: docs, label: Documentation }
+                - { value: network, label: Dealer network }
+          - { name: title, label: Title, type: string }
+          - { name: text, label: Text, type: text }
+      - name: upcoming
+        label: Upcoming service banner
+        type: object
+        fields:
+          - { name: show, label: Show banner, type: boolean }
+          - { name: title, label: Title, type: string }
+          - { name: text, label: Text, type: text }
+          - { name: badge, label: Badge, type: string }
+
+  - name: products
+    label: "Home · Products"
+    type: file
+    path: _data/home/products.yml
+    format: yaml
+    fields:
+      - { name: eyebrow, label: Eyebrow, type: string }
+      - { name: title, label: Heading, type: string }
+      - { name: intro, label: Intro, type: text }
+      - name: featured
+        label: Featured product
+        type: object
+        fields:
+          - { name: tag, label: Tag, type: string }
+          - { name: name, label: Name, type: string }
+          - { name: text, label: Description, type: text }
+          - { name: cta_label, label: Button text, type: string }
+          - { name: image, label: Screenshot, type: image, description: "Optional. Replaces the spec card. 4:3 landscape works best." }
+          - { name: image_alt, label: Screenshot description, type: string }
+          - name: specs
+            label: Spec card rows
+            type: object
+            list: true
+            fields:
+              - { name: label, label: Label, type: string }
+              - { name: value, label: Value, type: string }
+              - { name: highlight, label: Highlight in red, type: boolean }
+      - name: items
+        label: Other products
+        type: object
+        list: true
+        fields:
+          - { name: name, label: Name, type: string }
+          - { name: text, label: Description, type: text }
+
+  - name: process
+    label: "Home · How we work"
+    type: file
+    path: _data/home/process.yml
+    format: yaml
+    fields:
+      - { name: eyebrow, label: Eyebrow, type: string }
+      - { name: title, label: Heading, type: string }
+      - { name: intro, label: Intro, type: text }
+      - name: steps
+        label: Steps
+        type: object
+        list: true
+        fields:
+          - { name: title, label: Title, type: string }
+          - { name: text, label: Text, type: text }
+
+  - name: industries
+    label: "Home · Industries"
+    type: file
+    path: _data/home/industries.yml
+    format: yaml
+    fields:
+      - { name: eyebrow, label: Eyebrow, type: string }
+      - { name: title, label: Heading, type: string }
+      - { name: intro, label: Intro, type: text }
+      - name: items
+        label: Industries
+        type: object
+        list: true
+        fields:
+          - { name: title, label: Title, type: string }
+          - { name: text, label: Text, type: text }
+          - name: icon
+            label: Icon
+            type: select
+            options:
+              values:
+                - { value: pump, label: Pump }
+                - { value: mechanical, label: Mechanical }
+                - { value: equipment, label: Equipment / plant }
+          - { name: image, label: Photo, type: image, description: "Optional. Replaces the icon. Wide images work best." }
+          - { name: image_alt, label: Photo description, type: string }
+
+  - name: why
+    label: "Home · Why us"
+    type: file
+    path: _data/home/why.yml
+    format: yaml
+    fields:
+      - { name: eyebrow, label: Eyebrow, type: string }
+      - { name: title, label: Heading, type: string }
+      - name: items
+        label: Promises
+        type: object
+        list: true
+        fields:
+          - { name: title, label: Title, type: string }
+          - { name: text, label: Text, type: text }
+
+  - name: technology
+    label: "Home · Technology partner"
+    type: file
+    path: _data/home/technology.yml
+    format: yaml
+    fields:
+      - { name: eyebrow, label: Eyebrow, type: string }
+      - { name: title, label: Heading, type: string }
+      - { name: text, label: Text, type: text }
+      - { name: cta_label, label: Button text, type: string }
+      - { name: partner_name, label: Partner name, type: string }
+      - { name: partner_byline, label: Partner byline, type: string }
+      - { name: partner_logo, label: Partner logo, type: image, description: "Optional. Replaces the partner name. Keep it under 48px tall." }
+      - { name: points, label: Points, type: string, list: true }
+
+  - name: insights_section
+    label: "Home · Insights section"
+    type: file
+    path: _data/home/insights.yml
+    format: yaml
+    fields:
+      - { name: eyebrow, label: Eyebrow, type: string }
+      - { name: title, label: Heading, type: string }
+      - { name: intro, label: Intro, type: text }
+      - { name: read_label, label: '"Read" link text', type: string }
+      - { name: soon_label, label: '"Coming soon" text', type: string }
+
+  - name: contact
+    label: "Home · Contact"
+    type: file
+    path: _data/home/contact.yml
+    format: yaml
+    fields:
+      - { name: eyebrow, label: Eyebrow, type: string }
+      - { name: title, label: Heading, type: string }
+      - { name: lead, label: Intro, type: text }
+      - { name: email_label, label: Label above email, type: string }
+      - { name: button_label, label: Send button text, type: string }
+
+  # ---------------------------------------------------------------- Settings
+  - name: settings
+    label: Site settings & SEO
+    type: file
+    path: _data/settings.yml
+    format: yaml
+    fields:
+      - { name: site_name, label: Site name, type: string, required: true }
+      - { name: email, label: Contact email, type: string, required: true, description: "Used in the header, footer and contact form." }
+      - { name: seo_title, label: Google title (home), type: string, description: "Keep under 60 characters." }
+      - { name: seo_description, label: Google description (home), type: text, description: "Keep between 120 and 160 characters." }
+      - { name: keywords, label: Keywords, type: string }
+      - { name: expertise, label: Areas of expertise (for search engines), type: string, list: true }
+      - { name: share_title, label: Social share title, type: string }
+      - { name: share_description, label: Social share description, type: text }
+      - { name: og_image, label: Social share image, type: image, description: "1200 × 630 px PNG or JPG." }
+      - { name: og_image_alt, label: Social share image description, type: string }
+      - name: nav
+        label: Menu
+        type: object
+        list: true
+        fields:
+          - { name: label, label: Label, type: string }
+          - name: target
+            label: Section
+            type: select
+            options:
+              values:
+                - { value: services, label: Services }
+                - { value: products, label: Products }
+                - { value: process, label: How we work }
+                - { value: industries, label: Industries }
+                - { value: why, label: Why us }
+                - { value: technology, label: Technology }
+                - { value: insights, label: Insights }
+                - { value: contact, label: Contact }
+      - { name: cta_label, label: Header button text, type: string }
+      - { name: footer_text, label: Footer text, type: text }

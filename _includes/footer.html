@@ -1,0 +1,40 @@
+{%- assign s = site.data.settings -%}
+{%- assign prod = site.data.home.products -%}
+{%- assign home = "/" | relative_url -%}
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="{{ home }}" aria-label="{{ s.site_name | escape }} home">
+          <svg class="mark mark-lg" aria-hidden="true"><use href="#mark"/></svg>
+          <span class="wm-stack"><span class="wordmark">MADE<span class="bar"></span><span class="o">O</span></span><span class="wm-sub">ORIGINAL</span></span>
+        </a>
+        <p>{{ s.footer_text | escape }}</p>
+      </div>
+      <div class="foot-cols">
+        <nav class="foot-col" aria-label="Explore">
+          <h2>Explore</h2>
+          {%- for item in s.nav %}
+          <a href="{{ home }}#{{ item.target }}">{{ item.label | escape }}</a>
+          {%- endfor %}
+        </nav>
+        <nav class="foot-col" aria-label="Products">
+          <h2>Products</h2>
+          <a href="{{ home }}#products">{{ prod.featured.name | escape }}</a>
+          {%- for item in prod.items %}
+          <a href="{{ home }}#products">{{ item.name | escape }}</a>
+          {%- endfor %}
+        </nav>
+        <nav class="foot-col" aria-label="Company">
+          <h2>Company</h2>
+          <a href="{{ home }}#contact">Contact</a>
+          <a href="mailto:{{ s.email }}">{{ s.email }}</a>
+        </nav>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year">{{ site.time | date: "%Y" }}</span> {{ s.site_name | escape }} · made-o.com</span>
+      <a href="mailto:{{ s.email }}">{{ s.email }}</a>
+    </div>
+  </div>
+</footer>

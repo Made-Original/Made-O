@@ -1,0 +1,19 @@
+eyebrow: Industries
+title: Where we start.
+intro: "We focus where product data is most complex and most valuable — and expand from there."
+items:
+  - icon: pump
+    image: ""
+    image_alt: ""
+    title: Pump manufacturing
+    text: "Selection logic, performance curves, and dealer catalogues for centrifugal, submersible, and process pumps."
+  - icon: mechanical
+    image: ""
+    image_alt: ""
+    title: Mechanical engineering
+    text: Component libraries, assemblies, and spare-parts data made findable for engineers and buyers.
+  - icon: equipment
+    image: ""
+    image_alt: ""
+    title: Industrial equipment
+    text: Technical documentation and product information hubs for engineered-to-order machinery.

@@ -1,0 +1,30 @@
+# Jekyll configuration — GitHub Pages builds the site from this on every push.
+title: Made Original
+url: "https://made-o.com"
+baseurl: ""
+timezone: Asia/Kolkata
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+
+collections:
+  insights:
+    output: true
+    permalink: /insights/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: insights
+    values:
+      layout: insight
+
+exclude:
+  - README.md
+  - made-original.html
+  - "Made-O Logo.html"
+  - "Made-O Logo.pdf"
+  - node_modules
+  - Gemfile
+  - Gemfile.lock

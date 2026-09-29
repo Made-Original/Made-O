@@ -1,0 +1,20 @@
+{%- assign s = site.data.settings -%}
+{%- assign img = page.image | default: s.og_image -%}
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": {{ page.url | absolute_url | append: '#article' | jsonify }},
+  "mainEntityOfPage": {{ page.url | absolute_url | jsonify }},
+  "headline": {{ page.title | jsonify }},
+  "description": {{ page.summary | jsonify }},
+  "articleSection": {{ page.category | jsonify }},
+  "image": {{ img | absolute_url | jsonify }},
+  "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
+  "dateModified": {{ page.last_modified_at | default: page.date | date_to_xmlschema | jsonify }},
+  "inLanguage": "en",
+  "author": {"@type": "Organization", "@id": {{ '/#organization' | absolute_url | jsonify }}, "name": {{ s.site_name | jsonify }}, "url": {{ '/' | absolute_url | jsonify }}},
+  "publisher": {"@type": "Organization", "@id": {{ '/#organization' | absolute_url | jsonify }}, "name": {{ s.site_name | jsonify }}, "logo": {"@type": "ImageObject", "url": {{ '/assets/img/logo.png' | absolute_url | jsonify }}}}
+}
+</script>
