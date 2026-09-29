@@ -1,6 +1,7 @@
 {%- assign s = site.data.settings -%}
 {%- assign svc = site.data.home.services -%}
 {%- assign prod = site.data.home.products -%}
+{%- assign addr = s.address -%}
 <!-- Structured data -->
 <script type="application/ld+json">
 {
@@ -15,8 +16,14 @@
       "logo": {"@type": "ImageObject", "url": {{ '/assets/img/logo.png' | absolute_url | jsonify }}, "width": 512, "height": 512},
       "image": {{ s.og_image | absolute_url | jsonify }},
       "email": {{ s.email | jsonify }},
+      {%- if s.phone and s.phone != "" %}
+      "telephone": {% capture tel %}{% include tel.html number=s.phone %}{% endcapture %}{{ tel | jsonify }},
+      {%- endif %}
+      {%- if addr.street and addr.street != "" %}
+      "address": {"@type": "PostalAddress", "streetAddress": {{ addr.street | strip | newline_to_br | strip_newlines | replace: "<br />", ", " | jsonify }}, "addressLocality": {{ addr.city | jsonify }}, "addressRegion": {{ addr.region | jsonify }}, "postalCode": {{ addr.postal_code | jsonify }}, "addressCountry": {{ addr.country | jsonify }}},
+      {%- endif %}
       "description": {{ s.seo_description | jsonify }},
-      "contactPoint": {"@type": "ContactPoint", "contactType": "sales", "email": {{ s.email | jsonify }}, "availableLanguage": ["English"]},
+      "contactPoint": {"@type": "ContactPoint", "contactType": "sales", "email": {{ s.email | jsonify }},{% if s.phone and s.phone != "" %} "telephone": {{ tel | jsonify }},{% endif %} "availableLanguage": ["English"]},
       "areaServed": [{"@type": "Country", "name": "India"}, {"@type": "Place", "name": "Worldwide"}],
       "knowsAbout": {{ s.expertise | jsonify }},
       "hasOfferCatalog": {

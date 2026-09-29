@@ -1,0 +1,7 @@
+{%- comment -%} Office address from Site settings, one line per part. {%- endcomment -%}
+{%- assign a = site.data.settings.address -%}
+{{- a.street | strip | escape | newline_to_br -}}
+{%- capture line2 -%}{{ a.city }}{% if a.region and a.region != "" %}{% if a.city and a.city != "" %}, {% endif %}{{ a.region }}{% endif %}{% if a.postal_code and a.postal_code != "" %} {{ a.postal_code }}{% endif %}{%- endcapture -%}
+{%- assign line2 = line2 | strip -%}
+{%- if line2 != "" %}<br>{{ line2 | escape }}{% endif -%}
+{%- if a.country and a.country != "" %}<br>{{ a.country | escape }}{% endif -%}

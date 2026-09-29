@@ -334,9 +334,15 @@ header.menu-open .mobile-menu { display: block; }
 .contact-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(36px, 5vw, 64px); align-items: start; }
 .contact h2 { font-size: clamp(1.8rem, 3.6vw, 2.7rem); font-weight: 600; text-wrap: balance; }
 .contact .lead { color: #c3ccd5; margin-top: 16px; }
-.contact .direct { margin-top: 28px; }
-.contact .direct .lbl { color: #9aa7b3; font-size: 0.85rem; margin-bottom: 6px; }
-.contact .direct a { color: var(--accent-2); font-family: "IBM Plex Mono", monospace; font-size: 1.02rem; overflow-wrap: anywhere; }
+.contact .direct { margin-top: 32px; }
+.contact .direct-title { font-size: 1.05rem; font-weight: 600; margin-bottom: 16px; }
+.direct-list { display: grid; gap: 18px; margin: 0; }
+.direct-list > div { padding-left: 16px; border-left: 2px solid rgba(255,255,255,.14); }
+.direct-list dt { color: #9aa7b3; font-size: 0.85rem; margin-bottom: 4px; }
+.direct-list dd { margin: 0; }
+.direct-list a { color: var(--accent-2); font-family: "IBM Plex Mono", monospace; font-size: 1.02rem; overflow-wrap: anywhere; }
+.direct-list address { font-style: normal; color: var(--paper-on-dark); line-height: 1.55; }
+.direct-list .map-link { display: inline-block; margin-top: 6px; font-family: "IBM Plex Sans", sans-serif; font-size: 0.9rem; }
 .form { background: var(--ink-2); border: 1px solid rgba(255,255,255,.1); border-radius: 20px; padding: clamp(22px, 3vw, 30px); }
 .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
 .field { margin-bottom: 16px; }

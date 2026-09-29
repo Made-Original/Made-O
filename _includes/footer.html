@@ -29,6 +29,9 @@
           <h2>Company</h2>
           <a href="{{ home }}#contact">Contact</a>
           <a href="mailto:{{ s.email }}">{{ s.email }}</a>
+          {%- if s.phone and s.phone != "" %}
+          <a href="tel:{% include tel.html number=s.phone %}">{{ s.phone | escape }}</a>
+          {%- endif %}
         </nav>
       </div>
     </div>

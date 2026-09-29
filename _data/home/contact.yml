@@ -1,5 +1,9 @@
 eyebrow: Start a conversation
 title: "Let's build your first digital product."
 lead: "Tell us about your products and where the data lives today. We'll come back with a concrete first step — usually a prototype you can see."
-email_label: Prefer email?
+direct_title: Prefer to talk directly?
+email_label: Email
+phone_label: Phone
+address_label: Office
+map_label: View on map
 button_label: Send enquiry

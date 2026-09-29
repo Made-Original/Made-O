@@ -257,7 +257,11 @@ content:
       - { name: eyebrow, label: Eyebrow, type: string }
       - { name: title, label: Heading, type: string }
       - { name: lead, label: Intro, type: text }
-      - { name: email_label, label: Label above email, type: string }
+      - { name: direct_title, label: Heading above contact details, type: string }
+      - { name: email_label, label: Email label, type: string }
+      - { name: phone_label, label: Phone label, type: string }
+      - { name: address_label, label: Address label, type: string }
+      - { name: map_label, label: Map link text, type: string }
       - { name: button_label, label: Send button text, type: string }
 
   # ---------------------------------------------------------------- Settings
@@ -268,7 +272,19 @@ content:
     format: yaml
     fields:
       - { name: site_name, label: Site name, type: string, required: true }
-      - { name: email, label: Contact email, type: string, required: true, description: "Used in the header, footer and contact form." }
+      - { name: email, label: Contact email, type: string, required: true, description: "Used in the contact section, footer and contact form." }
+      - { name: phone, label: Mobile / phone number, type: string, description: "Include the country code, e.g. +91 98765 43210. Leave empty to hide." }
+      - name: address
+        label: Office address
+        type: object
+        description: Leave the street empty to hide the address.
+        fields:
+          - { name: street, label: Street address, type: text, description: "Building, street and area. Use a new line for each line." }
+          - { name: city, label: City, type: string }
+          - { name: region, label: State, type: string }
+          - { name: postal_code, label: PIN / postal code, type: string }
+          - { name: country, label: Country, type: string }
+          - { name: map_url, label: Google Maps link, type: string, description: "Optional. Paste the Share link from Google Maps." }
       - { name: seo_title, label: Google title (home), type: string, description: "Keep under 60 characters." }
       - { name: seo_description, label: Google description (home), type: text, description: "Keep between 120 and 160 characters." }
       - { name: keywords, label: Keywords, type: string }

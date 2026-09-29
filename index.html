@@ -265,9 +265,34 @@ home: true
       <div class="eyebrow">{{ contact.eyebrow | escape }}</div>
       <h2>{{ contact.title | escape }}</h2>
       <p class="lead">{{ contact.lead | escape }}</p>
+      {%- assign addr = s.address %}
       <div class="direct">
-        <div class="lbl">{{ contact.email_label | escape }}</div>
-        <a href="mailto:{{ s.email }}">{{ s.email }}</a>
+        {%- if contact.direct_title and contact.direct_title != "" %}
+        <h3 class="direct-title">{{ contact.direct_title | escape }}</h3>
+        {%- endif %}
+        <dl class="direct-list">
+          <div>
+            <dt>{{ contact.email_label | escape }}</dt>
+            <dd><a href="mailto:{{ s.email }}">{{ s.email }}</a></dd>
+          </div>
+          {%- if s.phone and s.phone != "" %}
+          <div>
+            <dt>{{ contact.phone_label | escape }}</dt>
+            <dd><a href="tel:{% include tel.html number=s.phone %}">{{ s.phone | escape }}</a></dd>
+          </div>
+          {%- endif %}
+          {%- if addr.street and addr.street != "" %}
+          <div>
+            <dt>{{ contact.address_label | escape }}</dt>
+            <dd>
+              <address>{% include address.html %}</address>
+              {%- if addr.map_url and addr.map_url != "" %}
+              <a class="map-link" href="{{ addr.map_url }}" target="_blank" rel="noopener">{{ contact.map_label | escape }} ↗</a>
+              {%- endif %}
+            </dd>
+          </div>
+          {%- endif %}
+        </dl>
       </div>
     </div>
     <form class="form" id="enquiry" data-email="{{ s.email }}" novalidate>

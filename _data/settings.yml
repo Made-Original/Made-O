@@ -1,5 +1,17 @@
 site_name: Made Original
 email: hello@made-o.com
+# Shown only when filled in. Include the country code, e.g. "+91 98765 43210".
+phone: "+91 9633151700"
+address:
+  street: |
+    2nd Floor, KC Arcade
+    Thuthiyoor Road, near CSEZ, Kakkanad
+  city: Kochi
+  region: Kerala
+  postal_code: "682030"
+  country: India
+  # Optional Google Maps link for "View on map".
+  map_url: ""
 
 # Search engines
 seo_title: "Export-Ready Product Data & Dealer Portals | Made Original"
