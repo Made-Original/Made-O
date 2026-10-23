@@ -11,7 +11,7 @@ address:
   postal_code: "682030"
   country: India
   # Optional Google Maps link for "View on map".
-  map_url: ""
+  map_url: "https://maps.app.goo.gl/uV6gJvE19qjNgtFE6"
 
 # Contact form delivery.
 # FormSubmit needs no account: the first enquiry sends an activation email to the address
@@ -41,7 +41,8 @@ bing_site_verification: ""     # Bing Webmaster Tools → HTML meta tag → the 
 ga4_id: ""                     # Google Analytics 4 measurement ID, e.g. G-AB12CD34EF
 
 # Company profiles elsewhere (LinkedIn, Clutch…). Full links. Tells Google these belong to Made Original.
-social: []
+social:
+  - "https://maps.app.goo.gl/uV6gJvE19qjNgtFE6"
 
 # Social sharing (LinkedIn, WhatsApp, X…)
 share_title: "Made Original — Get export-ready, from the product data up"
