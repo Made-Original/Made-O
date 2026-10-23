@@ -26,6 +26,10 @@ content:
         label: Title
         type: string
         required: true
+      - name: seo_title
+        label: Google title
+        type: string
+        description: "Optional shorter title for Google results. Keep under 44 characters: \" | Made Original\" is added after it. Defaults to the title."
       - name: category
         label: Category
         type: string
@@ -61,6 +65,56 @@ content:
       - name: body
         label: Article
         type: rich-text
+
+  # ---------------------------------------------------------------- Service, product & industry pages
+  - name: solutions
+    label: "Pages (services, products, industries, about)"
+    type: collection
+    path: _solutions
+    filename: "{primary}.md"
+    format: yaml-frontmatter
+    view:
+      fields: [title, kind, permalink]
+      primary: title
+      sort: [order, title]
+      default:
+        sort: order
+        order: asc
+    fields:
+      - { name: title, label: Page heading (H1), type: string, required: true }
+      - { name: seo_title, label: Google title, type: string, required: true, description: "Shown in Google results. Keep under 44 characters: \" | Made Original\" is added after it." }
+      - { name: summary, label: Google description and intro, type: text, required: true, description: "Shown under the heading and in Google results. Keep between 120 and 155 characters." }
+      - { name: eyebrow, label: Small label above the heading, type: string, description: "e.g. Service, Industry, Flagship product" }
+      - { name: footer_label, label: Short name for footer links, type: string }
+      - name: kind
+        label: Page type
+        type: select
+        required: true
+        options:
+          values:
+            - { value: service, label: Service }
+            - { value: product, label: Product }
+            - { value: industry, label: Industry }
+            - { value: about, label: About }
+      - { name: permalink, label: Web address, type: string, required: true, description: "Starts and ends with /, lowercase words joined by hyphens, e.g. /services/product-data/. Don't change it once the page is live." }
+      - { name: order, label: Order, type: number, description: "Position in footer and \"Explore more\" lists. Lower comes first." }
+      - { name: cta_label, label: Button text, type: string }
+      - { name: related_category, label: Related Insights category, type: string, description: "Insights notes with exactly this category are listed on the page, e.g. Pump Connect." }
+      - { name: service_name, label: Service name for search engines, type: string, description: "Optional. Defaults to the page heading." }
+      - { name: service_type, label: Type of service for search engines, type: string, description: "Optional. e.g. Pump selection software." }
+      - { name: audience, label: Who it is for, type: string, description: "Optional. e.g. Pump manufacturers." }
+      - { name: image, label: Image, type: image, description: "Optional. Landscape (16:9), at least 1200px wide." }
+      - { name: image_alt, label: Image description, type: string, description: "Describe the image for screen readers and search engines." }
+      - name: faqs
+        label: Questions and answers
+        type: object
+        list: true
+        description: "Shown at the end of the page and given to Google as FAQ data."
+        fields:
+          - { name: q, label: Question, type: string }
+          - { name: a, label: Answer, type: text }
+      - { name: published, label: Show on site, type: boolean, default: true }
+      - { name: body, label: Page content, type: rich-text }
 
   # ---------------------------------------------------------------- Home page sections
   - name: hero
@@ -117,6 +171,8 @@ content:
                 - { value: network, label: Dealer network }
           - { name: title, label: Title, type: string }
           - { name: text, label: Text, type: text }
+          - { name: url, label: Link to page, type: string, description: "Optional. Web address of the matching page, e.g. /services/product-data/" }
+          - { name: link_label, label: Link text, type: string, description: "Describe where the link goes, e.g. Product data consulting. Defaults to Learn more." }
       - name: upcoming
         label: Upcoming service banner
         type: object
@@ -143,6 +199,7 @@ content:
           - { name: name, label: Name, type: string }
           - { name: text, label: Description, type: text }
           - { name: cta_label, label: Button text, type: string }
+          - { name: url, label: Link to product page, type: string, description: "Optional. e.g. /pump-connect/" }
           - { name: image, label: Screenshot, type: image, description: "Optional. Replaces the spec card. 4:3 landscape works best." }
           - { name: image_alt, label: Screenshot description, type: string }
           - name: specs
@@ -202,6 +259,8 @@ content:
                 - { value: pump, label: Pump }
                 - { value: mechanical, label: Mechanical }
                 - { value: equipment, label: Equipment / plant }
+          - { name: url, label: Link to page, type: string, description: "Optional. e.g. /industries/pump-manufacturers/" }
+          - { name: link_label, label: Link text, type: string, description: "Describe where the link goes, e.g. Product data consulting. Defaults to Learn more." }
           - { name: image, label: Photo, type: image, description: "Optional. Replaces the icon. Wide images work best." }
           - { name: image_alt, label: Photo description, type: string }
 
@@ -248,6 +307,24 @@ content:
       - { name: read_label, label: '"Read" link text', type: string }
       - { name: soon_label, label: '"Coming soon" text', type: string }
 
+  - name: faq
+    label: "Home · FAQ"
+    type: file
+    path: _data/home/faq.yml
+    format: yaml
+    fields:
+      - { name: show, label: Show section, type: boolean }
+      - { name: eyebrow, label: Eyebrow, type: string }
+      - { name: title, label: Heading, type: string }
+      - { name: intro, label: Intro, type: text }
+      - name: items
+        label: Questions
+        type: object
+        list: true
+        fields:
+          - { name: q, label: Question, type: string }
+          - { name: a, label: Answer, type: text, description: "Plain sentences. Answer the question in the first sentence." }
+
   - name: contact
     label: "Home · Contact"
     type: file
@@ -293,6 +370,10 @@ content:
       - { name: seo_description, label: Google description (home), type: text, description: "Keep between 120 and 160 characters." }
       - { name: keywords, label: Keywords, type: string }
       - { name: expertise, label: Areas of expertise (for search engines), type: string, list: true }
+      - { name: google_site_verification, label: Google Search Console code, type: string, description: "From Search Console → HTML tag. Paste only the content=\"…\" value." }
+      - { name: bing_site_verification, label: Bing Webmaster code, type: string, description: "From Bing Webmaster Tools → HTML meta tag. Paste only the content=\"…\" value." }
+      - { name: ga4_id, label: Google Analytics ID, type: string, description: "GA4 measurement ID, e.g. G-AB12CD34EF. Leave empty to turn analytics off." }
+      - { name: social, label: Company profile links, type: string, list: true, description: "Full links to your LinkedIn, Clutch and other company profiles." }
       - { name: share_title, label: Social share title, type: string }
       - { name: share_description, label: Social share description, type: text }
       - { name: og_image, label: Social share image, type: image, description: "1200 × 630 px PNG or JPG." }
@@ -315,6 +396,7 @@ content:
                 - { value: why, label: Why us }
                 - { value: technology, label: Technology }
                 - { value: insights, label: Insights }
+                - { value: faq, label: FAQ }
                 - { value: contact, label: Contact }
       - { name: form_endpoint, label: Contact form endpoint, type: string, description: "Where enquiries are sent. Default: https://formsubmit.co/ajax/hello@made-o.com" }
       - { name: form_access_key, label: Contact form access key, type: string, description: "Only needed for Web3Forms." }

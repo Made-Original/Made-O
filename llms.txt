@@ -1,0 +1,38 @@
+---
+layout: null
+permalink: /llms.txt
+---
+{%- assign s = site.data.settings -%}
+{%- assign faq = site.data.home.faq -%}
+# {{ s.site_name }}
+
+> {{ s.seo_description }}
+
+{{ s.site_name }} (also "Made-O") is a consultancy based in {{ s.address.city }}, {{ s.address.region }}, {{ s.address.country }}. It works with pump, mechanical engineering and industrial equipment manufacturers in India and worldwide. Solutions are built on NovaDB, an enterprise product-information platform by Noxum.
+
+Contact: {{ s.email }}{% if s.phone and s.phone != "" %} · {{ s.phone }}{% endif %}
+
+## Pages
+{%- assign pages_sorted = site.solutions | sort: "order" %}
+{%- for p in pages_sorted %}
+{%- unless p.noindex %}
+- [{{ p.footer_label | default: p.title }}]({{ p.url | absolute_url }}): {{ p.summary }}
+{%- endunless %}
+{%- endfor %}
+{%- assign posts = site.insights | where_exp: "p", "p.coming_soon != true" | sort: "date" | reverse %}
+{%- if posts.size > 0 %}
+
+## Insights
+{%- for post in posts %}
+- [{{ post.title }}]({{ post.url | absolute_url }}): {{ post.summary }}
+{%- endfor %}
+{%- endif %}
+{%- if faq.show %}
+
+## Common questions
+{%- for f in faq.items %}
+
+### {{ f.q }}
+{{ f.a }}
+{%- endfor %}
+{%- endif %}

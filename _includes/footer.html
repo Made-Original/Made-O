@@ -1,6 +1,10 @@
 {%- assign s = site.data.settings -%}
 {%- assign prod = site.data.home.products -%}
 {%- assign home = "/" | relative_url -%}
+{%- assign sol = site.solutions | sort: "order" -%}
+{%- assign sol_industries = sol | where: "kind", "industry" -%}
+{%- assign sol_services = sol | where: "kind", "service" | concat: sol_industries -%}
+{%- assign sol_about = sol | where: "kind", "about" | first -%}
 <footer>
   <div class="wrap">
     <div class="foot-grid">
@@ -18,15 +22,26 @@
           <a href="{{ home }}#{{ item.target }}">{{ item.label | escape }}</a>
           {%- endfor %}
         </nav>
+        {%- if sol_services.size > 0 %}
+        <nav class="foot-col" aria-label="Services">
+          <h2>Services</h2>
+          {%- for p in sol_services %}
+          <a href="{{ p.url | relative_url }}">{{ p.footer_label | default: p.title | escape }}</a>
+          {%- endfor %}
+        </nav>
+        {%- endif %}
         <nav class="foot-col" aria-label="Products">
           <h2>Products</h2>
-          <a href="{{ home }}#products">{{ prod.featured.name | escape }}</a>
+          <a href="{% if prod.featured.url and prod.featured.url != "" %}{{ prod.featured.url | relative_url }}{% else %}{{ home }}#products{% endif %}">{{ prod.featured.name | escape }}</a>
           {%- for item in prod.items %}
           <a href="{{ home }}#products">{{ item.name | escape }}</a>
           {%- endfor %}
         </nav>
         <nav class="foot-col" aria-label="Company">
           <h2>Company</h2>
+          {%- if sol_about %}
+          <a href="{{ sol_about.url | relative_url }}">About us</a>
+          {%- endif %}
           <a href="{{ home }}#contact">Contact</a>
           <a href="mailto:{{ s.email }}">{{ s.email }}</a>
           {%- if s.phone and s.phone != "" %}

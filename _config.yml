@@ -12,6 +12,10 @@ collections:
   insights:
     output: true
     permalink: /insights/:name/
+  # Service, product, industry and About pages. Each file sets its own permalink.
+  solutions:
+    output: true
+    permalink: /:name/
 
 defaults:
   - scope:
@@ -19,6 +23,11 @@ defaults:
       type: insights
     values:
       layout: insight
+  - scope:
+      path: ""
+      type: solutions
+    values:
+      layout: landing
 
 exclude:
   - README.md

@@ -100,6 +100,8 @@
         .then(function () {
           show('ok', [form.getAttribute('data-success')]);
           form.reset();
+          // Counted as a conversion when Google Analytics is set up (Site settings → GA4 ID).
+          if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', { form_id: 'enquiry' });
         })
         .catch(function (err) {
           if (window.console) console.warn('Enquiry not sent:', err.message);

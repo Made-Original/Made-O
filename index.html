@@ -17,6 +17,7 @@ home: true
 {%- assign tech = site.data.home.technology -%}
 {%- assign ins = site.data.home.insights -%}
 {%- assign contact = site.data.home.contact -%}
+{%- assign faq = site.data.home.faq -%}
 
 <!-- HERO -->
 <section class="hero">
@@ -75,6 +76,9 @@ home: true
         {% include icon.html name=item.icon %}
         <h3>{{ item.title | escape }}</h3>
         <p>{{ item.text | escape }}</p>
+        {%- if item.url and item.url != "" %}
+        <a class="card-link" href="{{ item.url | relative_url }}">{{ item.link_label | default: "Learn more" | escape }} →</a>
+        {%- endif %}
       </div>
       {%- endfor %}
     </div>
@@ -107,7 +111,12 @@ home: true
         <div class="tag">{{ f.tag | escape }}</div>
         <h3>{{ f.name | escape }}</h3>
         <p>{{ f.text | escape }}</p>
-        <a class="btn btn-ghost-inv" href="#contact">{{ f.cta_label | escape }}</a>
+        <div class="btns">
+          <a class="btn btn-ghost-inv" href="#contact">{{ f.cta_label | escape }}</a>
+          {%- if f.url and f.url != "" %}
+          <a class="card-link" href="{{ f.url | relative_url }}">More about {{ f.name | escape }} →</a>
+          {%- endif %}
+        </div>
       </div>
       {%- if f.image and f.image != "" %}
       <img class="prod-img" src="{{ f.image | relative_url }}" alt="{{ f.image_alt | escape }}" loading="lazy" decoding="async">
@@ -173,6 +182,9 @@ home: true
         <div class="body">
           <h3>{{ item.title | escape }}</h3>
           <p>{{ item.text | escape }}</p>
+          {%- if item.url and item.url != "" %}
+          <a class="card-link" href="{{ item.url | relative_url }}">{{ item.link_label | default: "Learn more" | escape }} →</a>
+          {%- endif %}
         </div>
       </div>
       {%- endfor %}
@@ -257,6 +269,29 @@ home: true
     </div>
   </div>
 </section>
+
+<!-- FAQ -->
+{%- if faq.show and faq.items.size > 0 %}
+<section class="section alt home-faq" id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">{{ faq.eyebrow | escape }}</div>
+      <h2>{{ faq.title | escape }}</h2>
+      {%- if faq.intro and faq.intro != "" %}
+      <p>{{ faq.intro | escape }}</p>
+      {%- endif %}
+    </div>
+    <div class="faq-list">
+      {%- for f in faq.items %}
+      <details>
+        <summary>{{ f.q | escape }}</summary>
+        <p>{{ f.a | escape }}</p>
+      </details>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+{%- endif %}
 
 <!-- CONTACT -->
 <section class="section contact on-dark" id="contact">
