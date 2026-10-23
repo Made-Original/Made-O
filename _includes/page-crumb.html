@@ -1,0 +1,9 @@
+{%- comment -%} Sets crumb_label / crumb_url for a _solutions page, from its kind. {%- endcomment -%}
+{%- assign crumb_label = nil -%}
+{%- assign crumb_url = nil -%}
+{%- assign crumb_home = "/" | relative_url -%}
+{%- case page.kind -%}
+{%- when "service" -%}{%- assign crumb_label = "Services" -%}{%- assign crumb_url = crumb_home | append: "#services" -%}
+{%- when "product" -%}{%- assign crumb_label = "Products" -%}{%- assign crumb_url = crumb_home | append: "#products" -%}
+{%- when "industry" -%}{%- assign crumb_label = "Industries" -%}{%- assign crumb_url = crumb_home | append: "#industries" -%}
+{%- endcase -%}

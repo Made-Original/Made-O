@@ -3,7 +3,9 @@ title: sample
 category: machinery
 summary: technical documentation
 date: 2026-09-29
-image: /assets/uploads/image for prodcut data.jpg
+image: /assets/uploads/product-data-structuring.jpg
+image_alt: ""
 coming_soon: false
-published: true
+# Test entry from Pages CMS. Hidden so search engines don't index an empty page.
+published: false
 ---

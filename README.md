@@ -11,6 +11,10 @@ Website for **Made Original** — consulting for export-oriented pump, machinery
 
 Images uploaded in the CMS are stored in `assets/uploads/`. Every image field is optional — leave it empty and the built-in illustration or icon is shown instead.
 
+**Pages:** service, product, industry and About pages live under *Pages* in the CMS. Each has a Google title, a description, the page text and optional questions and answers (shown on the page and given to Google). Keep each page's web address unchanged once it is live.
+
+**SEO codes:** paste the Google Search Console and Bing verification codes, the Google Analytics ID and company profile links under *Site settings & SEO*. Each is optional and only added to the site when filled in.
+
 **Insights:** a new note starts with *Coming soon* off. While *Coming soon* is on, the card shows "Publishing soon", the article page is hidden from search engines, and it's left out of the sitemap.
 
 ## Structure
@@ -21,11 +25,13 @@ The site is built by Jekyll, which GitHub Pages runs automatically — there is 
 _data/settings.yml      Site name, contact email, SEO, menu, footer text
 _data/home/*.yml        One file per home-page section (hero, services, products…)
 _insights/*.md          Insights blog notes (published at /insights/<file-name>/)
-_layouts/               Page templates (default, insight)
+_solutions/*.md         Service, product, industry and About pages (each sets its own permalink)
+_layouts/               Page templates (default, insight, landing)
 _includes/              Head/SEO, header, footer, structured data, icons, hero illustration
 index.html              Home page template
 404.html                Not-found page
-sitemap.xml             Generated sitemap (home + published notes)
+sitemap.xml             Generated sitemap (home, pages and published notes)
+llms.txt                Generated summary of the site for AI assistants
 assets/css/styles.css   All styles (brand tokens, light/dark, responsive)
 assets/js/main.js       Mobile menu and contact form
 assets/img/             Social preview image and logo
@@ -40,4 +46,4 @@ GitHub Pages must be set to **Deploy from a branch** (Settings → Pages) so tha
 
 Colours are defined as tokens at the top of `styles.css`:
 Forge `#0C1015` · Steel Red `#C0392B` · Warm White `#F0ECE4` · Iron `#5A6270`.
-Typeface: Space Grotesk (headings, wordmark), IBM Plex Sans (body).
+Typeface: Manrope for everything (set once as `--font`); weights 800 for page titles, 700 for headings, 400 for body text.

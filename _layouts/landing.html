@@ -1,0 +1,84 @@
+---
+layout: default
+---
+{%- comment -%}
+  Service, product, industry and About pages (the _solutions collection).
+  Copy lives in each file's front matter and body, edited through Pages CMS.
+{%- endcomment -%}
+{%- assign s = site.data.settings -%}
+{%- assign contact = site.data.home.contact -%}
+{%- assign home = "/" | relative_url -%}
+{%- include page-crumb.html -%}
+<article class="section article landing">
+  <div class="wrap narrow">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="{{ home }}">Home</a>
+      {%- if crumb_label %} <span aria-hidden="true">/</span> <a href="{{ crumb_url }}">{{ crumb_label }}</a>{% endif %}
+    </nav>
+    {%- if page.eyebrow and page.eyebrow != "" %}
+    <div class="eyebrow">{{ page.eyebrow | escape }}</div>
+    {%- endif %}
+    <h1>{{ page.title | escape }}</h1>
+    <p class="lead">{{ page.summary | escape }}</p>
+    <div class="page-cta">
+      <a class="btn btn-primary" href="{{ home }}#contact">{{ page.cta_label | default: s.cta_label | escape }}</a>
+    </div>
+    {%- if page.image and page.image != "" %}
+    <figure class="cover"><img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | escape }}" decoding="async"></figure>
+    {%- endif %}
+
+    <div class="prose">
+{{ content }}
+    </div>
+
+    {%- if page.faqs and page.faqs.size > 0 %}
+    <section class="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Common questions</h2>
+      <div class="faq-list">
+        {%- for f in page.faqs %}
+        <details>
+          <summary>{{ f.q | escape }}</summary>
+          <p>{{ f.a | escape }}</p>
+        </details>
+        {%- endfor %}
+      </div>
+    </section>
+    {%- endif %}
+
+    {%- if page.related_category and page.related_category != "" %}
+    {%- assign rel = site.insights | where: "category", page.related_category | where_exp: "p", "p.coming_soon != true" %}
+    {%- if rel.size > 0 %}
+    <section class="related" aria-labelledby="rel-title">
+      <h2 id="rel-title">Related reading</h2>
+      <ul>
+        {%- for p in rel %}
+        <li><a href="{{ p.url | relative_url }}">{{ p.title | escape }}</a></li>
+        {%- endfor %}
+      </ul>
+    </section>
+    {%- endif %}
+    {%- endif %}
+
+    {%- assign others = site.solutions | where_exp: "p", "p.kind != 'about'" | sort: "order" %}
+    {%- if others.size > 1 %}
+    <nav class="more" aria-labelledby="more-title">
+      <h2 id="more-title">Explore more</h2>
+      <div class="more-grid">
+        {%- for p in others %}
+        {%- unless p.url == page.url %}
+        <a class="more-card" href="{{ p.url | relative_url }}">
+          <span class="k">{{ p.eyebrow | escape }}</span>
+          <span class="t">{{ p.footer_label | default: p.title | escape }}</span>
+        </a>
+        {%- endunless %}
+        {%- endfor %}
+      </div>
+    </nav>
+    {%- endif %}
+
+    <div class="article-cta">
+      <p>{{ contact.title | escape }}</p>
+      <a class="btn btn-primary" href="{{ home }}#contact">{{ s.cta_label | escape }}</a>
+    </div>
+  </div>
+</article>

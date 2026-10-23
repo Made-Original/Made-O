@@ -10,6 +10,19 @@ permalink: /sitemap.xml
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+  {%- assign solution_pages = site.solutions | sort: "order" %}
+  {%- for p in solution_pages %}
+  {%- unless p.noindex %}
+  <url>
+    <loc>{{ p.url | absolute_url | xml_escape }}</loc>
+    {%- if p.last_modified_at %}
+    <lastmod>{{ p.last_modified_at | date: "%Y-%m-%d" }}</lastmod>
+    {%- endif %}
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  {%- endunless %}
+  {%- endfor %}
   {%- for post in site.insights %}
   {%- unless post.coming_soon %}
   <url>

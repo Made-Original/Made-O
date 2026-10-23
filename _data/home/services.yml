@@ -4,12 +4,18 @@ intro: "Three things decide whether your products sell abroad: the data behind t
 items:
   - icon: data
     title: Product data, market-ready
+    url: /services/product-data/
+    link_label: Product data consulting
     text: "We structure and enrich your product information so it's complete, consistent, and ready for every market, language, and channel you sell into."
   - icon: docs
     title: Documentation that clears the border
+    url: /services/technical-documentation/
+    link_label: Technical documentation
     text: "We get manuals, certificates, and technical documents organised, translatable, and compliant for the markets you're entering — EU Machinery Regulation included."
   - icon: network
     title: Dealer systems that sell for you
+    url: /services/dealer-portals/
+    link_label: Dealer portals and catalogues
     text: "We give your distributors abroad the catalogues, pricing, and product data they need to specify and order — without waiting on your inbox."
 upcoming:
   show: true

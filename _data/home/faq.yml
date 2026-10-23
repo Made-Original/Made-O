@@ -1,0 +1,19 @@
+show: true
+eyebrow: Questions
+title: Common questions from manufacturers.
+intro: "Short answers to what pump, machinery and engineering manufacturers ask us most."
+items:
+  - q: "What does Made Original do?"
+    a: "Made Original is a consultancy based in Kochi, India, that helps export-oriented pump, machinery and engineering manufacturers get their product data, technical documentation and dealer systems ready for international markets. We don't stop at advice: we build the working systems, such as digital catalogues, dealer portals and pump selection tools."
+  - q: "Who do you work with?"
+    a: "Medium and large manufacturers of pumps, mechanical engineering products and industrial equipment, in India and worldwide, especially those selling through dealers and distributors or entering export markets."
+  - q: "What is Pump Connect?"
+    a: "Pump Connect is our ready-to-adapt product catalogue, pump selection tool and dealer portal for pump manufacturers. It is built on your own pump data and can be live in weeks."
+  - q: "How quickly can we see results?"
+    a: "We build a working prototype with your real product data early in the project, usually within weeks, so you can test it with your team and dealers before scaling it to your full range."
+  - q: "Do we need to replace our ERP or existing systems?"
+    a: "No. We work with the data you already have in spreadsheets, ERP exports and PDFs, and connect the new catalogue, portal or documentation system to your existing tools."
+  - q: "Can you help us prepare for the EU Machinery Regulation?"
+    a: "Yes. The EU Machinery Regulation (EU) 2023/1230 applies from 20 January 2027. We help machinery exporters organise, structure and digitise their technical documentation and instructions to meet it."
+  - q: "What technology do you use?"
+    a: "Our solutions are built on NovaDB, an enterprise product-information platform by Noxum, so they scale from a single catalogue to your entire product range and dealer network."
